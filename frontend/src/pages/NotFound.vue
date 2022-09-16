@@ -10,7 +10,7 @@ export default {
 
 <template>
   <div class="main">
-    <img alt="Ayako Pouting" src="https://cdn.discordapp.com/emojis/759041750341386260.png"/>
+    <img alt="Ayako Pouting" src="https://ayakobot.com/cdn/website_assets/ayakopout.png"/>
     <div><h1>AyakoBot.com</h1></div>
     <div><h3>Address not found or under construction</h3></div>
     <button @click="goBack">Take me back!</button>
@@ -38,12 +38,11 @@ button {
   color: #18181b;
   font-weight: bold;
   border-radius: 0.5em;
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 button:hover {
   background-color: #29ab39;
   color: #d3d3ec;
-  transition: background-color 0.2s ease-out, color 0.2s ease-out;
 }
 </style>

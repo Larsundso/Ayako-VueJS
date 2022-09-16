@@ -1,14 +1,15 @@
 <template class="main">
   <NavBar/>
   <router-view/>
+  <PageFooter/>
 </template>
 
 <style scoped>
-
 </style>
 
 <script lang="ts">
 import NavBar from './components/NavBar.vue';
+import PageFooter from './components/PageFooter.vue';
 
 export default {
   name: 'App',
@@ -25,6 +26,7 @@ export default {
   },
   components: {
     NavBar,
+    PageFooter,
   },
 };
 </script>

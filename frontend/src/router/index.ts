@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Homepage from '../pages/HomePage.vue';
+import HomePage from '../pages/HomePage.vue';
+import PremiumPage from '../pages/PremiumPage.vue';
 
 export default createRouter({
   history: createWebHistory(),
@@ -7,12 +8,12 @@ export default createRouter({
     {
       path: '/',
       name: 'home',
-      component: Homepage,
+      component: HomePage,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../pages/AboutPage.vue'),
+      path: '/premium',
+      name: 'premium',
+      component: PremiumPage,
     },
     {
       path: '/:pathMatch(.*)*',

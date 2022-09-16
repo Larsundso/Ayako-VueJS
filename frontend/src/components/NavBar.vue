@@ -2,10 +2,16 @@
 export default {
   methods: {
     invite() {
-      document.location.href = 'https://discord.com/api/oauth2/authorize?client_id=650691698409734151&permissions=1642787630327&scope=bot%20applications.commands';
+      window.open(
+        'https://discord.com/api/oauth2/authorize?client_id=650691698409734151&permissions=1642787630327&scope=bot%20applications.commands',
+        '_blank',
+      );
     },
     support() {
-      document.location.href = 'https://discord.com/invite/euTdctganf';
+      window.open(
+        'https://discord.com/invite/euTdctganf',
+        '_blank',
+      );
     },
   },
 };
@@ -29,6 +35,7 @@ export default {
       </button>
       <button @click="$router.push('commands')">Commands</button>
       <button @click="support">Support</button>
+      <button class="premium" @click="$router.push('premium')">👑 Premium 👑</button>
       <button class="login" @click="$router.push('login')">Login
       </button>
     </div>
@@ -38,9 +45,12 @@ export default {
 <style scoped>
 .logoBox {
   display: flex;
-  wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.premium {
+  color: gold;
 }
 
 .login {
@@ -63,9 +73,6 @@ button:hover {
   transition: background-color 0.2s ease-out;
 }
 
-.buttonBox {
-}
-
 .ayako {
   font-size: 1.5em;
 }
@@ -86,9 +93,16 @@ button:hover {
 }
 
 .NavBarBox {
+  z-index: 10;
+  overflow: hidden;
+  background-color: #181818;
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 0 0.5em 0.5em #181818;
 }
 
 </style>
