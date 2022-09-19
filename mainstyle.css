@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&display=swap');
+
+/* Color scheme:
+Old green: 00ff00
+Green: b0ff00
+Orange: fe3521
+Light pink: ff9db8
+Background (dark blue-gray): 18181b
+Text (almost-white): f2f2f2
+*/
+
+* {
+    box-sizing: border-box;
+    font-family: Futura;
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0;
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+html {
+    background-color: #18181b;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.down {
+    flex-direction: column;
+}
+
+.up {
+    flex-direction: column-reverse;
+}
+
+.left {
+    flex-direction: row-reverse;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+  
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+  
+.justify-center {
+    justify-content: center;
+}
+  
+.justify-between {
+    justify-content: space-between;
+}
+  
+.justify-items-center {
+    justify-items: center;
+}
+
+.left {
+    margin-right:auto;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+footer {
+    position: relative;
+    z-index: 1;
+}
+.nav-link {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.logo-link {
+    font-size: 1.3rem;
+    font-family: Arial;
+}
+
+.header-link .nav-link:hover {
+    opacity: 0.6;
+}
+
+.footer-link .nav-link:hover {
+    opacity: 0.6;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.auto {
+    margin: auto;
+}
+
+.relative {
+    position: relative;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.orange {
+    color: #fe3521;
+}
+
+.green {
+    color: #b0ff00;
+    transition: 0.5s;
+}
+
+.green:hover {
+    color: #ff9db8;
+}
+
+.heading {
+    font-size: 65px;
+}
+
+.descrip {
+    margin-bottom: 1rem;
+}
+
+/* Unused atm */
+.font-size-large {
+    font-size: 1.8rem;
+}
+
+.space-top {
+    margin-top: 3rem;
+}
+
+.space-bottom {
+    margin-bottom: 8.5rem;
+}
+
+.space-side {
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+}
+
+/* Customizing orange box bgs + text inside */
+.orange-box {
+    border: none;
+    padding: 1rem 1rem;
+    width: 22rem;
+    height: 8.5rem; /*set individual heights?*/
+    background-color: #fe3521;
+}
+
+/* Customizing buttons */
+.bg-white {
+    color: #f2f2f2;
+}
+
+.rcorners {
+    border-radius: 10px;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.btn-dimension {
+    border: none;
+    padding: 1rem 1rem;
+    width: 160px;
+    height: 50px;
+}
+
+.btn {
+    background-color: #f2f2f2;
+    color: #fe3521;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    color: #f2f2f2;
+    background-color: #fe3521;
+}
+
+.btn-green {
+    background-color: #b0ff00;
+    color: #18181b;
+    transition: 0.5s;
+}
+
+.btn-green:hover {
+    background-color: #18181b;
+    color: #b0ff00;
+}
+
+.btn-grad {
+    border: none;
+    padding: 1rem 1rem;
+    background-size: 200% auto;
+    color: #18181b;
+    background-image: linear-gradient(to right,#fe3521 0%, #b0ff00 40%);
+    transition: 0.6s;
+} 
+
+.btn-grad:hover {
+    background-position: right center;
+}
+
+
+.body-font {
+    font-family: Arial;
+}
+
+.credits-font {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+}
+
+.credits-highlight {
+    border: none;
+    border-radius: 10px;
+    padding: .25rem .35rem;
+    background-color: black;
+    opacity: 0.7;
+}
+
+/* Text adjusts according to tab size. */
+@media (max-width: 550px) {
+    .responsive-large { font-size: 1.4rem; }
+    .responsive-medium { font-size: 1.2rem; }
+}
+
+@media (min-width: 551px) {
+    .responsive-large { font-size: 1.8rem; }
+    .responsive-medium { font-size: 1.4rem; }
+}
+
+
+
+/* Positioning orange boxes with pictures */
+.parent {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+  
+.image-front {
+    position: absolute;
+    top: 0rem;
+    left: 7.5rem;
+}
+
+.image-back {
+    position: relative;
+    top: 4rem;
+    left: 26rem;
+}
+
+.image-outlier {
+    position: relative;
+    top: 4rem;
+    left: 45rem;
+}
+
+.image-outlier2 {
+    position: absolute;
+    top: 15rem;
+    left: 7.5rem;
+}
+
+/* Flower positions */
+#flower1 {
+    transform: rotate(20deg);
+    position: absolute;
+    margin-top: 9rem;
+    margin-left: 13rem;
+}
+
+#flower2 {
+    transform: rotate(-30deg);
+    position: absolute;
+    margin-top: 13rem;
+    margin-left: 25rem;
+}
+
+#flower3 {
+    transform: rotate(-20deg);
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: 48rem;
+}
+
+#flower4 {
+    transform: rotate(30deg);
+    position: absolute;
+    margin-top: 19rem;
+    margin-left: 55rem;
+}
+
+#flower5 {
+    transform: rotate(30deg);
+    position: absolute;
+    margin-top: 17rem;
+    margin-left: 60rem;
+}
+
+#flower6 {
+    position: absolute;
+    margin-top: -1rem;
+    margin-left: 15rem;
+}
+
+#flower7 {
+    transform: rotate(-30deg);
+    position: absolute;
+    margin-top: 18rem;
+    margin-left: 70rem;
+}
+
+/* Pink spinning flower */
+#flower8 {
+    position: absolute;
+    margin-top: 17.45rem;
+    margin-left: 52.5rem;
+
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+#flower9 {
+    transform: rotate(105deg);
+    position: absolute;
+    margin-top: 7rem;
+    margin-left: 65rem;
+}
+
+#ayako-bg {
+    position: absolute;
+    opacity: 0.2;
+    margin-top: 4.5rem;
+    z-index: 0;
+}
