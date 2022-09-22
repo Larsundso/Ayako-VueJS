@@ -8,7 +8,7 @@ server.listen(80);
 
 app.get('*', async (req: Express.Request, res: Express.Response) => {
   if (!req.headers || !req.headers.host) {
-    serveFile(res);
+    res.sendFile('/root/Bots/Ayako-VueJS/frontend/dist/index.html');
     return;
   }
 
@@ -27,15 +27,10 @@ app.get('*', async (req: Express.Request, res: Express.Response) => {
       return;
     }
     default: {
-      serveFile(res);
+      res.sendFile('/root/Bots/Ayako-VueJS/frontend/dist/index.html');
     }
   }
 });
 
 // eslint-disable-next-line no-console
 console.log('Website Started');
-
-const serveFile = (res: Express.Response) => {
-  res.contentType('text/html');
-  res.sendFile('/root/Bots/ayako-vuejs/viteFrontend/dist/index.html');
-};

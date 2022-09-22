@@ -3,7 +3,7 @@ import type Express from 'express';
 
 export default async (req: Express.Request, res: Express.Response) => {
   const reqURL = req.url.replace('cdn', '');
-  const path = `/root/Bots/ayako-vuejs/backend/CDN/${reqURL}`.replace(/\/+/g, '/');
+  const path = `/root/Bots/Ayako-VueJS/CDN/${reqURL}`.replace(/\/+/g, '/');
 
   if (reqURL.length === 0) {
     res.sendStatus(404);
