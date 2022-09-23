@@ -6,9 +6,11 @@ const server = http.createServer(app);
 
 server.listen(80);
 
+const frotendPath = '/root/Bots/Ayako-VueJS/frontend/dist/index.html';
+
 app.get('*', async (req: Express.Request, res: Express.Response) => {
   if (!req.headers || !req.headers.host) {
-    res.sendFile('/root/Bots/Ayako-VueJS/frontend/dist/index.html');
+    res.sendFile(frotendPath);
     return;
   }
 
@@ -27,7 +29,7 @@ app.get('*', async (req: Express.Request, res: Express.Response) => {
       return;
     }
     default: {
-      res.sendFile('/root/Bots/Ayako-VueJS/frontend/dist/index.html');
+      res.sendFile(frotendPath);
     }
   }
 });

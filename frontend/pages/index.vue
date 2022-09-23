@@ -1,23 +1,21 @@
 <template>
   <div>
     <NavBar />
-    <NuxtLink to="/"><HomePage /></NuxtLink>
+    <NuxtLink to="/">Hello</NuxtLink>
+    <NuxtLink to="*"><NotFound /></NuxtLink>
     <PageFooter />
   </div>
 </template>
 
-<script>
-import NavBar from '../components/NavBar';
-import PageFooter from '../components/PageFooter';
-import HomePage from './HomePage';
-import '../assets/main.css';
+<script lang="ts">
+import Vue from 'vue'
+import NotFound from './NotFound.vue'
+import PageFooter from '~/components/PageFooter.vue'
+import NavBar from '~/components/NavBar.vue'
+import '~/assets/main.css'
 
-export default {
+export default Vue.extend({
   name: 'IndexPage',
-  components: {
-    NavBar,
-    HomePage,
-    PageFooter
-  }
-}
+  components: { PageFooter, NavBar, NotFound },
+})
 </script>
