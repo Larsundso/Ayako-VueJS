@@ -1,37 +1,18 @@
-import Express from 'express';
-import http from 'http';
+import './server.js';
+import './socketIOHandler.js';
+import readline from 'readline';
 
-const app = Express();
-const server = http.createServer(app);
-
-server.listen(80);
-
-const frotendPath = '/root/Bots/Ayako-VueJS/frontend/dist/index.html';
-
-app.get('*', async (req: Express.Request, res: Express.Response) => {
-  if (!req.headers || !req.headers.host) {
-    res.sendFile(frotendPath);
-    return;
-  }
-
-  const subDomain = req.headers.host.split(/\./g)[0].toLowerCase();
-  const param = req.path.split(/\//g)[1].toLowerCase();
-
-  switch (true) {
-    case param === 'api':
-    case subDomain === 'api': {
-      (await import('./routers/api.js')).default(req, res);
-      return;
-    }
-    case param === 'cdn':
-    case subDomain === 'cdn': {
-      (await import('./routers/cdn.js')).default(req, res);
-      return;
-    }
-    default: {
-      res.sendFile(frotendPath);
-    }
-  }
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+rl.on('line', async (msg) => {
+  if (msg === 'restart') process.exit();
+  // eslint-disable-next-line no-console
+  console.log(
+    msg.includes('await') || msg.includes('return')
+      ? // eslint-disable-next-line no-eval
+        await eval(`(async () => {${msg}})()`)
+      : // eslint-disable-next-line no-eval
+        eval(msg),
+  );
 });
 
 // eslint-disable-next-line no-console
