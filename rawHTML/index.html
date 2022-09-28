@@ -24,13 +24,13 @@
     />
     <meta content="https://ayakobot.com" property="og:url" />
     <meta
-      content="https://ayakobot.com/cdn/website_assets/ayako.ico"
+      content="https://cdn.ayakobot.com/website_assets/ayako.ico"
       property="og:image"
     />
     <meta content="64" property="og:image:width" />
     <meta content="64" property="og:image:height" />
     <link
-      href="https://ayakobot.com/cdn/website_assets/ayako.ico"
+      href="https://cdn.ayakobot.com/website_assets/ayako.ico"
       rel="icon"
       type="image/png"
     />
@@ -40,22 +40,424 @@
         margin: 0;
         min-height: 100%;
       }
+
+      @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&display=swap");
+
+      /* Color scheme:
+Old green: 00ff00
+Green: b0ff00
+Orange: fe3521
+Light pink: ff9db8
+Background (dark blue-gray): 18181b
+Text (almost-white): f2f2f2
+*/
+
+      * {
+        box-sizing: border-box;
+        font-family: Futura;
+        font-size: 17px;
+        font-weight: normal;
+        margin: 0;
+        color: #f2f2f2;
+        text-decoration: none;
+      }
+
+      html {
+        background-color: #18181b;
+        line-height: 1.5;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .down {
+        flex-direction: column;
+      }
+
+      .up {
+        flex-direction: column-reverse;
+      }
+
+      .left {
+        flex-direction: row-reverse;
+      }
+
+      .items-start {
+        align-items: flex-start;
+      }
+
+      .items-end {
+        align-items: flex-end;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .justify-start {
+        justify-content: flex-start;
+      }
+
+      .justify-end {
+        justify-content: flex-end;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      .justify-items-center {
+        justify-items: center;
+      }
+
+      .left {
+        margin-right: auto;
+      }
+
+      .flex-shrink-0 {
+        flex-shrink: 0;
+      }
+      footer {
+        position: relative;
+        z-index: 1;
+      }
+      .nav-link {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+
+      .logo-link {
+        font-size: 1.3rem;
+        font-family: Arial;
+      }
+
+      .header-link .nav-link:hover {
+        opacity: 0.6;
+      }
+
+      .footer-link .nav-link:hover {
+        opacity: 0.6;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .auto {
+        margin: auto;
+      }
+
+      .relative {
+        position: relative;
+      }
+
+      .inline {
+        display: inline-block;
+      }
+
+      .orange {
+        color: #fe3521;
+      }
+
+      .green {
+        color: #b0ff00;
+        transition: 0.5s;
+      }
+
+      .green:hover {
+        color: #ff9db8;
+      }
+
+      .heading {
+        font-size: 65px;
+      }
+
+      .descrip {
+        margin-bottom: 1rem;
+      }
+
+      /* Unused atm */
+      .font-size-large {
+        font-size: 1.8rem;
+      }
+
+      .space-top {
+        margin-top: 3rem;
+      }
+
+      .space-bottom {
+        margin-bottom: 8.5rem;
+      }
+
+      .space-side {
+        margin-left: 1.6rem;
+        margin-right: 1.6rem;
+      }
+
+      /* Customizing orange box bgs + text inside */
+      .orange-box {
+        border: none;
+        padding: 1rem 1rem;
+        width: 22rem;
+        height: 8.5rem; /*set individual heights?*/
+        background-color: #fe3521;
+      }
+
+      /* Customizing buttons */
+      .bg-white {
+        color: #f2f2f2;
+      }
+
+      .rcorners {
+        border-radius: 10px;
+      }
+
+      .circle {
+        border-radius: 50%;
+      }
+
+      .btn-dimension {
+        border: none;
+        padding: 1rem 1rem;
+        width: 160px;
+        height: 50px;
+      }
+
+      .btn {
+        background-color: #f2f2f2;
+        color: #fe3521;
+        transition: 0.5s;
+      }
+
+      .btn:hover {
+        color: #f2f2f2;
+        background-color: #fe3521;
+      }
+
+      .btn-green {
+        background-color: #b0ff00;
+        color: #18181b;
+        transition: 0.5s;
+      }
+
+      .btn-green:hover {
+        background-color: #18181b;
+        color: #b0ff00;
+      }
+
+      .btn-grad {
+        border: none;
+        padding: 1rem 1rem;
+        background-size: 200% auto;
+        color: #18181b;
+        background-image: linear-gradient(to right, #fe3521 0%, #b0ff00 40%);
+        transition: 0.6s;
+      }
+
+      .btn-grad:hover {
+        background-position: right center;
+      }
+
+      .body-font {
+        font-family: Arial;
+      }
+
+      .credits-font {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 13px;
+      }
+
+      .credits-highlight {
+        border: none;
+        border-radius: 10px;
+        padding: 0.25rem 0.35rem;
+        background-color: black;
+        opacity: 0.7;
+      }
+
+      /* Text adjusts according to tab size. */
+      @media (max-width: 550px) {
+        .responsive-large {
+          font-size: 1.4rem;
+        }
+        .responsive-medium {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (min-width: 551px) {
+        .responsive-large {
+          font-size: 1.8rem;
+        }
+        .responsive-medium {
+          font-size: 1.4rem;
+        }
+      }
+
+      /* Positioning orange boxes with pictures */
+      .parent {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+      .image-front {
+        position: absolute;
+        top: 0rem;
+        left: 7.5rem;
+      }
+
+      .image-back {
+        position: relative;
+        top: 4rem;
+        left: 26rem;
+      }
+
+      .image-outlier {
+        position: relative;
+        top: 4rem;
+        left: 45rem;
+      }
+
+      .image-outlier2 {
+        position: absolute;
+        top: 15rem;
+        left: 7.5rem;
+      }
+
+      /* Flower positions */
+      #flower1 {
+        transform: rotate(20deg);
+        position: absolute;
+        margin-top: 9rem;
+        margin-left: 13rem;
+      }
+
+      #flower2 {
+        transform: rotate(-30deg);
+        position: absolute;
+        margin-top: 13rem;
+        margin-left: 25rem;
+      }
+
+      #flower3 {
+        transform: rotate(-20deg);
+        position: absolute;
+        margin-top: 10rem;
+        margin-left: 48rem;
+      }
+
+      #flower4 {
+        transform: rotate(30deg);
+        position: absolute;
+        margin-top: 19rem;
+        margin-left: 55rem;
+      }
+
+      #flower5 {
+        transform: rotate(30deg);
+        position: absolute;
+        margin-top: 17rem;
+        margin-left: 60rem;
+      }
+
+      #flower6 {
+        position: absolute;
+        margin-top: -1rem;
+        margin-left: 15rem;
+      }
+
+      #flower7 {
+        transform: rotate(-30deg);
+        position: absolute;
+        margin-top: 18rem;
+        margin-left: 70rem;
+      }
+
+      /* Pink spinning flower */
+      #flower8 {
+        position: absolute;
+        margin-top: 17.45rem;
+        margin-left: 52.5rem;
+
+        -webkit-animation: spin 4s linear infinite;
+        -moz-animation: spin 4s linear infinite;
+        animation: spin 4s linear infinite;
+      }
+
+      @-moz-keyframes spin {
+        100% {
+          -moz-transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+      #flower9 {
+        transform: rotate(105deg);
+        position: absolute;
+        margin-top: 7rem;
+        margin-left: 65rem;
+      }
+
+      #ayako-bg {
+        position: absolute;
+        opacity: 0.2;
+        margin-top: 4.5rem;
+        z-index: 0;
+      }
     </style>
     <base href="/" />
-    <link rel="stylesheet" href="mainstyle.css" />
   </head>
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="app"></div>
-    <script src="/src/main.ts" type="module"></script>
 
     <!--Navigation bar-->
     <nav class="nav-link">
       <div class="flex justify-end">
         <div class="left">
           <div class="flex justify-start">
-            <img src="Images/nav bar icon.png" width="35" height="35" />
+            <img
+              src="https://cdn.ayakobot.com/website_assets/NavBarIcon.png"
+              width="35"
+              height="35"
+            />
             <a href="/" target="_blank" class="nav-link logo-link">Ayako Bot</a>
           </div>
         </div>
@@ -83,16 +485,32 @@
 
     <!--White flowers in bg-->
     <div>
-      <img id="flower1" src="Images/softflowerglow spread.png" width="110" />
-      <img id="flower2" src="Images/softflowerglow spread.png" width="50" />
-      <img id="flower3" src="Images/softflowerglow spread.png" width="80" />
-      <img id="flower4" src="Images/softflowerglow spread.png" width="30" />
+      <img
+        id="flower1"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="110"
+      />
+      <img
+        id="flower2"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="50"
+      />
+      <img
+        id="flower3"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="80"
+      />
+      <img
+        id="flower4"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="30"
+      />
     </div>
 
     <div class="space-bottom">
       <img
         class="space-top center"
-        src="Images/softflowerglow.png"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
         width="150"
       />
       <div class="text-center">
@@ -110,7 +528,7 @@
           >
           <img
             class="inline space-side"
-            src="Images/softflowerglow lightgreen.png"
+            src="https://cdn.ayakobot.com/website_assets/greenFlower.png"
             width="35"
           />
           <a
@@ -128,7 +546,7 @@
       <div class="parent space-bottom">
         <img
           class="rcorners image-back"
-          src="Images/discord mod.png"
+          src="https://cdn.ayakobot.com/website_assets/moderation.png"
           width="700"
         />
         <div class="rcorners orange-box image-front">
@@ -142,7 +560,7 @@
       <div class="parent space-bottom">
         <img
           class="rcorners image-front"
-          src="Images/discord rxn role.png"
+          src="https://cdn.ayakobot.com/website_assets/roles.png"
           width="650"
         />
         <div class="rcorners orange-box image-outlier">
@@ -156,7 +574,7 @@
       <div class="parent">
         <img
           class="rcorners image-back"
-          src="Images/discord mod.png"
+          src="https://cdn.ayakobot.com/website_assets/rp.png"
           width="700"
         />
         <div class="rcorners orange-box image-outlier2">
@@ -173,12 +591,36 @@
     <br />
 
     <div>
-      <img id="ayako-bg" src="Images/ayako leaning.png" width="360" />
-      <img id="flower5" src="Images/softflowerglow spread.png" width="110" />
-      <img id="flower6" src="Images/softflowerglow spread.png" width="80" />
-      <img id="flower7" src="Images/softflowerglow spread.png" width="30" />
-      <img id="flower8" src="Images/softflowerglow lightgreen.png" width="20" />
-      <img id="flower9" src="Images/softflowerglow spread.png" width="50" />
+      <img
+        id="ayako-bg"
+        src="https://cdn.ayakobot.com/website_assets/AyakoLeaning.png"
+        width="360"
+      />
+      <img
+        id="flower5"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="110"
+      />
+      <img
+        id="flower6"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="80"
+      />
+      <img
+        id="flower7"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="30"
+      />
+      <img
+        id="flower8"
+        src="https://cdn.ayakobot.com/website_assets/greenFlower.png"
+        width="20"
+      />
+      <img
+        id="flower9"
+        src="https://cdn.ayakobot.com/website_assets/flower.png"
+        width="50"
+      />
     </div>
 
     <div class="responsive-large title text-center">
@@ -201,7 +643,11 @@
       <div class="flex justify-end">
         <div class="left">
           <div class="flex-shrink-0 flex justify-start">
-            <img src="Images/ayako sip.png" width="48" height="48" />
+            <img
+              src="https://cdn.ayakobot.com/website_assets/ayakoLove.png"
+              width="48"
+              height="48"
+            />
             <a
               href="/"
               target="_blank"

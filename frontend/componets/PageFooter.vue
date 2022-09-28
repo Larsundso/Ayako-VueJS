@@ -1,17 +1,6 @@
 <script>
 export default {
   name: "PageFooter",
-  methods: {
-    support() {
-      window.open("https://discord.gg/euTdctganf", "_blank");
-    },
-    vote() {
-      window.open("https://top.gg/bot/650691698409734151/vote", "_blank");
-    },
-    donate() {
-      window.open("https://www.patreon.com/Lars_und_so", "_blank");
-    },
-  },
 };
 </script>
 
@@ -22,6 +11,12 @@ export default {
       class="AyakoLeaning"
       src="https://cdn.ayakobot.com/website_assets/AyakoLeaning.png"
     />
+    <img
+      alt=""
+      class="flower2"
+      src="https://cdn.ayakobot.com/website_assets/flower.png"
+    />
+
     <div class="topRow">
       <div class="self">
         <div class="name">
@@ -31,51 +26,51 @@ export default {
         <span class="website">ayakobot.com</span>
       </div>
 
-      <img
-        alt=""
-        class="flower2"
-        src="https://cdn.ayakobot.com/website_assets/flower.png"
-      />
-
       <div class="buttons">
         <div class="row1">
-          <button class="baseButton" @click="$router.push('commands')">
+          <button class="button" @click="$router.push('commands')">
             Commands
           </button>
-          <button class="baseButton" @click="support">Support</button>
-          <button class="premium baseButton" @click="$router.push('premium')">
+          <a class="button" href="https://support.ayakobot.com" target="_blank"
+            >Support</a
+          >
+          <button class="premium button" @click="$router.push('premium')">
             👑 Premium 👑
           </button>
-          <button class="vote baseButton" @click="vote">Vote</button>
-          <button class="donate baseButton" @click="donate">
+          <a
+            class="vote button"
+            href="https://top.gg/bot/650691698409734151/vote"
+            target="_blank"
+            >Vote</a
+          >
+          <a
+            class="donate button"
+            href="https://www.patreon.com/Lars_und_so"
+            target="_blank"
+          >
             <img
               alt=""
               class="donateFlower"
               src="https://cdn.ayakobot.com/website_assets/greenFlower.png"
             />
             Donate
-          </button>
-          <button class="baseButton" @click="$router.push('art')">
-            Artwork
-          </button>
+          </a>
+          <button class="button" @click="$router.push('art')">Artwork</button>
         </div>
         <div class="row2">
-          <button class="baseButton" @click="support">Animekos</button>
-          <button class="baseButton" @click="$router.push('partners')">
+          <button class="button" @click="support">Animekos</button>
+          <button class="button" @click="$router.push('partners')">
             Partners
           </button>
-          <button class="baseButton" @click="$router.push('credits')">
+          <button class="button" @click="$router.push('credits')">
             Creators
           </button>
         </div>
         <div class="row3">
-          <button class="baseButton" @click="$router.push('privacy')">
+          <button class="button" @click="$router.push('privacy')">
             Privacy
           </button>
-          <button class="baseButton" @click="$router.push('terms')">
-            Terms
-          </button>
-          <button class="baseButton">Copyright</button>
+          <button class="button" @click="$router.push('terms')">Terms</button>
         </div>
       </div>
     </div>
@@ -91,6 +86,56 @@ export default {
 </template>
 
 <style scoped>
+@media (max-width: 1500px) {
+  .AyakoLeaning {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .ayakoPeek {
+    margin-top: 14rem;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .self {
+    margin-bottom: 2rem;
+  }
+
+  .topRow {
+    flex-direction: column;
+  }
+
+  .buttons {
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+
+  .flower2 {
+    display: none;
+  }
+
+  .row1 {
+    margin-bottom: 1rem;
+  }
+
+  .row2 {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .row2 {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
 .donateFlower {
   width: 1.5rem;
   height: 1.5rem;
@@ -110,24 +155,27 @@ export default {
 }
 
 .flower2 {
+  position: absolute;
   width: 4rem;
   height: 4rem;
-  margin-right: 30rem;
+  left: 30%;
+  margin-top: 5rem;
   rotate: 40deg;
 }
 
 .AyakoLeaning {
+  overflow: hidden;
   position: absolute;
   max-width: 15rem;
-  margin-top: -23rem;
+  margin-top: -2rem;
+  float: bottom;
   left: 0;
 }
 
 .ayakoPeek {
-  float: right;
-  margin-right: 5rem;
+  position: absolute;
+  right: 5%;
   max-width: 2rem;
-  bottom: 0;
 }
 
 .copyrightParent {
@@ -136,13 +184,16 @@ export default {
   align-items: center;
 }
 
-.baseButton {
+.button {
+  border-radius: 0;
   text-align: left;
-  border: none;
   background-color: transparent;
-  color: white;
   padding: 0.3em;
   font-size: 1em;
+}
+
+.button:hover {
+  background-color: var(--noBGSelect-color);
 }
 
 .donate {
@@ -168,16 +219,11 @@ export default {
 }
 
 .premium {
-  color: gold;
+  color: var(--gold-color);
 }
 
 .vote {
-  color: #3dff56;
-}
-
-.baseButton:hover {
-  background-color: #50505b;
-  transition: background-color 0.2s ease-out;
+  color: var(--button-color);
 }
 
 .row3 {
@@ -188,8 +234,6 @@ export default {
 .row2 {
   display: flex;
   flex-direction: column;
-  margin-left: 3rem;
-  margin-right: 3rem;
 }
 
 .row1 {
@@ -210,7 +254,6 @@ export default {
 }
 
 .topRow {
-  bottom: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -220,7 +263,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
-  margin-left: 10rem;
   z-index: 1;
 }
 
@@ -228,7 +270,7 @@ export default {
   font-weight: bold;
   margin-top: 0.3em;
   margin-left: 1em;
-  color: #fe3521;
+  color: var(--red-color);
 }
 
 .ayako {

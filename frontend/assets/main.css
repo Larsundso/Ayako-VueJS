@@ -1,0 +1,56 @@
+html {
+  --base-color: #181818;
+  --button-color: #3dff56;
+  --button-hover-color: #29ab39;
+  --text-color: white;
+  --gold-color: gold;
+  --red-color: #fe3521;
+  --noBGSelect-color: #50505b
+}
+
+body,
+html {
+  margin-top: 2em;
+  background-color: var(--base-color);
+  height: 100%;
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  color: var(--text-color);
+  scroll-behavior: smooth;
+  font-size: 1em;
+  user-select: none;
+  max-width: 99.8%;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--base-color);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+button, .button {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: var(--button-color);
+  padding: 1em 2em;
+  border-radius: 0.7em;
+  border: none;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  color: white;
+}
+
+button:hover, .button:hover {
+  background-color: var(--button-hover-color);
+}

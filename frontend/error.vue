@@ -6,8 +6,8 @@
         alt="Ayako Pouting"
         src="https://cdn.ayakobot.com/website_assets/ayakopout.png"
       />
-      <div><h1>AyakoBot.com</h1></div>
-      <div><h3>Address not found or under construction</h3></div>
+      <h1>AyakoBot.com</h1>
+      <p>Address not found or under construction</p>
       <NuxtLink to="/" class="btn">Take me home!</NuxtLink>
     </div>
     <PageFooter />
@@ -30,14 +30,20 @@ img {
   border-radius: 2em;
 }
 
+p {
+  display: block;
+}
+
 .main {
   padding-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20rem;
 }
 
-button {
+.btn {
+  text-decoration: none;
   padding: 1em;
   margin-top: 1em;
   background-color: #3dff56;
@@ -48,7 +54,7 @@ button {
   transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
+.btn:hover {
   background-color: #29ab39;
   color: #d3d3ec;
 }

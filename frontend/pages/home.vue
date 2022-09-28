@@ -1,5 +1,5 @@
 <script>
-import { onMounted } from "vue";
+import { onMounted, onBeforeUnmount } from "vue";
 
 export default {
   setup() {
@@ -15,23 +15,16 @@ export default {
       const hiddenElements = document.querySelectorAll(".hidden");
       hiddenElements.forEach((el) => observer.observe(el));
     });
-  },
-  methods: {
-    invite() {
-      window.open(
-        "https://discord.com/api/oauth2/authorize?client_id=650691698409734151&permissions=1642787630327&scope=bot%20applications.commands",
-        "_blank"
-      );
-    },
-    support() {
-      window.open("https://discord.gg/euTdctganf", "_blank");
-    },
+
+    onBeforeUnmount(() => {
+      window.scrollTo(0, 0);
+    });
   },
 };
 </script>
 
 <template>
-  <div>
+  <div class="main">
     <div>
       <div class="header">
         <img
@@ -60,22 +53,30 @@ export default {
           src="https://cdn.ayakobot.com/website_assets/flower.png"
         />
         <span class="name">AYAKO</span>
-        <span class="shortdesc">Powerful Server management</span>
+        <span class="shortdesc">Powerful Server manage&shy;ment</span>
         <span class="shortdesc">and moderation Bot</span>
       </div>
 
       <div class="buttonsBox">
-        <button class="inviteButton baseButton" @click="invite">
+        <a
+          class="inviteButton button"
+          href="https://invite.ayakobot.com"
+          target="_blank"
+        >
           Invite Ayako
-        </button>
+        </a>
         <img
           alt="Green Flower"
           class="greenFlower"
           src="https://cdn.ayakobot.com/website_assets/greenFlower.png"
         />
-        <button class="joinButton baseButton" @click="support">
+        <a
+          class="joinButton button"
+          href="https://support.ayakobot.com"
+          target="_blank"
+        >
           Support Server
-        </button>
+        </a>
       </div>
     </div>
 
@@ -175,43 +176,45 @@ export default {
       />
       <span class="footer">Build a secure, streamlined community. </span>
       <br />
-      <button class="footerButton" @click="invite">Get Started</button>
     </div>
+    <button class="footerButton" @click="invite">Get Started</button>
   </div>
 </template>
 
 <style scoped>
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .footerButton {
-  margin-left: -2rem;
-  border: none;
-  background-color: #3dff56;
   color: #181818;
-  padding: 1rem;
-  border-radius: 1em;
-  font-weight: bold;
   font-size: 1rem;
-  transition: background-color 0.2s;
 }
 
 .footerButton:hover {
-  background-color: #218c2f;
+  scale: 1.1;
+  animation: colorCycle infinite 3s alternate linear;
 }
 
-.footerFlower2 {
-  position: absolute;
-  width: 3em;
-  margin-top: -3rem;
-  margin-left: 30rem;
-  rotate: 10deg;
-  animation: thirdFlowerRotate 50s infinite;
-}
-
-.footerFlower1 {
-  position: absolute;
-  width: 5em;
-  margin-left: -45rem;
-  margin-top: -1rem;
-  animation: firstFlowerRotate 200s infinite;
+@keyframes colorCycle {
+  0% {
+    background-color: #3dff56;
+  }
+  25% {
+    background-color: #ee6055;
+  }
+  50% {
+    background-color: #60d394;
+  }
+  75% {
+    background-color: #ffd97d;
+  }
+  100% {
+    background-color: #ff9b85;
+  }
 }
 
 .footer {
@@ -259,11 +262,10 @@ export default {
 }
 
 .learnMoreButton {
-  font-weight: bold;
-  border: none;
   background-color: transparent;
   translate: 0;
   transition: 0.2s translate linear;
+  color: black;
 }
 
 .learnMoreButton:hover {
@@ -306,7 +308,7 @@ export default {
   position: fixed;
   bottom: 1rem;
   width: 5rem;
-  margin-right: 1em;
+  margin-left: -0.5rem;
   animation: 1s ease-in-out 2s both scrollDown;
   opacity: 0;
   z-index: 10;
@@ -365,6 +367,7 @@ export default {
 
 .inviteButton {
   color: #fe3521;
+  background-color: white;
   animation: 1s ease-in-out 1s both inviteButton;
   opacity: 0;
   transition: background-color 0.2s, color 0.2s;
@@ -383,13 +386,6 @@ export default {
     opacity: 1;
     transform: translateX(-1.5rem);
   }
-}
-
-.baseButton {
-  font-weight: bold;
-  border: none;
-  border-radius: 0.7em;
-  padding: 1.5em 2em;
 }
 
 .buttonsBox {
@@ -555,6 +551,7 @@ export default {
 }
 
 .header {
+  margin-top: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -576,6 +573,155 @@ export default {
   }
   100% {
     rotate: 360deg;
+  }
+}
+
+.footerFlower2 {
+  position: absolute;
+  width: 3em;
+  margin-top: -3rem;
+  margin-left: 22vh;
+  rotate: 10deg;
+  animation: thirdFlowerRotate 50s infinite;
+}
+
+.footerFlower1 {
+  position: absolute;
+  width: 5em;
+  margin-left: -20vh;
+  margin-top: 3rem;
+  animation: firstFlowerRotate 200s infinite;
+}
+
+@media (max-width: 900px) {
+  .fifthFlower {
+    margin-left: 22rem;
+    margin-top: 21rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .thirdFlower {
+    width: 5rem;
+    height: 5rem;
+    margin-left: 13rem;
+    margin-top: 12rem;
+  }
+
+  .secondFlower {
+    width: 6rem;
+    height: 6rem;
+    margin-left: -18rem;
+    margin-top: 15rem;
+  }
+  .firstFlower {
+    width: 8rem;
+    height: 8rem;
+    margin-top: 3rem;
+  }
+
+  .header {
+    font-size: 0.5rem;
+  }
+
+  .fifthFlower {
+    margin-left: 18rem;
+    margin-top: 20rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .forthFlower {
+    width: 3rem;
+    height: 3rem;
+    margin-left: -9rem;
+    margin-top: 12rem;
+  }
+
+  .secondFlower {
+    width: 5rem;
+    height: 5rem;
+    margin-left: -15rem;
+    margin-top: 16rem;
+  }
+
+  .firstFlower {
+    width: 8rem;
+    height: 8rem;
+    margin-top: 5rem;
+  }
+
+  .thirdFlower {
+    width: 5rem;
+    height: 5rem;
+    margin-left: 11rem;
+    margin-top: 12rem;
+  }
+
+  .fifthFlower {
+    margin-left: 15rem;
+    margin-top: 20rem;
+  }
+
+  .feature {
+    max-width: 20rem;
+    margin-left: 2rem;
+  }
+
+  .featureBox {
+    margin-left: 10rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footerFlower2 {
+    margin-left: 15vh;
+  }
+  
+  .footerFlower1 {
+    margin-left: -15vh;
+  }
+  
+  .secondFlower {
+    width: 5rem;
+    height: 5rem;
+    margin-left: -12rem;
+    margin-top: 16rem;
+  }
+
+  .firstFlower {
+    width: 8rem;
+    height: 8rem;
+    margin-top: 5rem;
+  }
+
+  .thirdFlower {
+    width: 5rem;
+    height: 5rem;
+    margin-left: 10rem;
+    margin-top: 12rem;
+  }
+
+
+  .forthFlower {
+    width: 3rem;
+    height: 3rem;
+    margin-left: -7rem;
+    margin-top: 13rem;
+  }
+
+  .fifthFlower {
+    margin-left: 13rem;
+    margin-top: 20rem;
+  }
+
+  .header {
+    font-size: 0.4rem;
+  }
+
+  .fifthFlower {
+    margin-left: 14rem;
+    margin-top: 20rem;
   }
 }
 </style>
