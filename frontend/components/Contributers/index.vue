@@ -1,13 +1,22 @@
 <script lang="ts">
+
+
 export default {
-  props: { contributer: Object },
+  props: {
+    contributer: {
+      "username": String,
+      "avatar": String,
+      "socials": Array,
+      "roles": Array
+    }
+  },
 };
 </script>
 
 <template>
-  <span class="contributer">
+  <div class="contributer">
     <div class="name">{{ contributer.username }}</div>
-    <img :src="contributer.avatar" class="pfp" />
+    <img :src="contributer.avatar" class="pfp" alt=""/>
     <div class="socials">
       <div v-for="(social, index) of contributer.socials" :key="index">
         <a :href="social.link" target="_blank">
@@ -20,7 +29,7 @@ export default {
         {{ role }}
       </div>
     </div>
-  </span>
+  </div>
 </template>
 
 <style scoped>
@@ -32,9 +41,6 @@ export default {
   text-align: center;
 }
 
-.roleName {
-  font-weight: bold;
-}
 .roles {
   margin-top: 1em;
 }
@@ -55,7 +61,7 @@ a {
   text-decoration: none;
   border-radius: 1em;
   padding: 0.5em;
-  transition: all linear 0.2s ease-out;
+  transition: all ease-in-out 0.2s;
 }
 
 a:hover {
@@ -66,11 +72,6 @@ a:hover {
   margin-top: 1em;
   display: flex;
   align-items: center;
-}
-
-.icon {
-  width: 1.5em;
-  fill: white;
 }
 
 .contributer {

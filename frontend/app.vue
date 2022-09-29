@@ -1,8 +1,5 @@
 <template>
   <div>
-    <Head>
-      <NoScript>JavaScript is required</NoScript>
-    </Head>
     <NavBar />
     <NuxtPage />
     <PageFooter />
@@ -14,6 +11,10 @@ import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 
 export default {
+  components: {
+    PageFooter,
+    NavBar
+  },
   setup() {
     useHead({
       title: "Ayako",

@@ -115,6 +115,10 @@
   .row2 {
     margin-bottom: 1rem;
   }
+
+  .button {
+    text-align: center;
+  }
 }
 
 @media (min-width: 700px) {

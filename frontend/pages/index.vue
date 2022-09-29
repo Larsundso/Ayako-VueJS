@@ -187,7 +187,7 @@ export default {
       <span class="footer">Build a secure, streamlined community. </span>
       <br />
     </div>
-    <button class="footerButton" @click="invite">Get Started</button>
+    <a class="footerButton button" href="https://invite.ayakobot.com" target="_blank">Get Started</a>
   </div>
 </template>
 
@@ -833,7 +833,7 @@ export default {
 
   .featureBox {
     margin-left: 5rem;
-    margin-top: -10 em;
+    margin-top: -10em;
     max-width: 9rem;
   }
 
