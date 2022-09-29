@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       windowWidth: 0,
-      show: false,
+      show,
     };
   },
   mounted() {
@@ -61,21 +61,21 @@ export default {
         v-else
         src="https://cdn.ayakobot.com/website_assets/more.png"
         class="showMore"
-        @click="toggleShow"
+        @click="toggleShow()"
         :class="{ 'background-color': show ? 'black' : 'transparent' }"
       />
     </div>
     <div v-if="show" class="expandableButtonBox">
-      <NuxtLink class="button login" to="/login" @click="toggleShow"
+      <NuxtLink class="button login" to="/login" @click="toggleShow()"
         >Login</NuxtLink
       >
-      <NuxtLink class="premium button" to="/premium" @click="toggleShow">
+      <NuxtLink class="premium button" to="/premium" @click="toggleShow()">
         👑 Premium 👑
       </NuxtLink>
       <a class="button" href="https://support.ayakobot.com" target="_blank"
         >Support</a
       >
-      <NuxtLink class="button" to="/commands" @click="toggleShow"
+      <NuxtLink class="button" to="/commands" @click="toggleShow()"
         >Commands</NuxtLink
       >
       <a class="button" href="https://invite.ayakobot.com" target="_blank"
@@ -114,8 +114,7 @@ NuxtLink:hover,
   flex-direction: column;
   align-items: center;
   background-color: var(--base-color);
-  margin-top: -0.6rem;
-  transition: all 0.5s ease-in-out linear;
+  margin-top: -0.5rem;
 }
 
 .showMore {
