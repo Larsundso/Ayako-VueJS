@@ -60,7 +60,7 @@
     "roles": ["Ayako Emoji Artist"]
   },
   {
-    "username": "OpenAI DALL·E#0824",
+    "username": "OpenAI DALL·E",
     "avatar": "https://cdn.discordapp.com/avatars/990746750224588860/acbff3ff78e2059d5388b9141a8a7b13.png?size=4096",
     "socials": [
       { "type": "Dall-E", "link": "https://labs.openai.com/" },

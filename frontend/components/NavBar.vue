@@ -1,12 +1,11 @@
 <script lang="ts">
 import { ref } from "vue";
-const show = ref(false);
 
 export default {
   data() {
     return {
       windowWidth: 0,
-      show,
+      show: false,
     };
   },
   mounted() {
@@ -23,7 +22,7 @@ export default {
       this.windowWidth = window.innerWidth;
     },
     toggleShow() {
-      show.value = !show.value;
+      this.show = !this.show;
     },
   },
 };
@@ -35,9 +34,9 @@ export default {
       <div class="logoBox">
         <a href="/">
           <img
-              alt="Ayako Logo"
-              class="ayakoLogo"
-              src="https://cdn.ayakobot.com/website_assets/NavBarIcon.png"
+            alt="Ayako Logo"
+            class="ayakoLogo"
+            src="https://cdn.ayakobot.com/website_assets/NavBarIcon.png"
           />
         </a>
         <span class="ayako bold">Ayako</span>
@@ -46,11 +45,11 @@ export default {
 
       <div v-if="windowWidth >= 605" class="buttonBox hiding">
         <a class="button" href="https://invite.ayakobot.com" target="_blank"
-        >Invite</a
+          >Invite</a
         >
         <NuxtLink class="button" to="/commands">Commands</NuxtLink>
         <a class="button" href="https://support.ayakobot.com" target="_blank"
-        >Support</a
+          >Support</a
         >
         <NuxtLink class="premium button" to="/premium">
           👑 Premium 👑
@@ -58,31 +57,32 @@ export default {
         <NuxtLink class="button login" to="/login">Login</NuxtLink>
       </div>
       <img
-          v-else
-          src="https://cdn.ayakobot.com/website_assets/more.png"
-          class="showMore"
-          :class="{ 'background-color': show ? 'black' : 'transparent' }"
-          @click="toggleShow"
-          alt="Open Buttons Menu"
+        v-else
+        src="https://cdn.ayakobot.com/website_assets/more.png"
+        class="showMore"
+        @click="toggleShow"
+        alt="Open Buttons Menu"
       />
     </div>
-    <div v-if="show" class="expandableButtonBox">
-      <NuxtLink class="button login" to="/login" @click="toggleShow"
-      >Login</NuxtLink
-      >
-      <NuxtLink class="premium button" to="/premium" @click="toggleShow">
-        👑 Premium 👑
-      </NuxtLink>
-      <a class="button" href="https://support.ayakobot.com" target="_blank"
-      >Support</a
-      >
-      <NuxtLink class="button" to="/commands" @click="toggleShow"
-      >Commands</NuxtLink
-      >
-      <a class="button" href="https://invite.ayakobot.com" target="_blank"
-      >Invite</a
-      >
-    </div>
+    <transition name="translate" mode="out-in">
+      <div class="expandableButtonBox" v-if="show">
+        <NuxtLink class="button login" to="/login" @click="toggleShow"
+          >Login</NuxtLink
+        >
+        <NuxtLink class="premium button" to="/premium" @click="toggleShow">
+          👑 Premium 👑
+        </NuxtLink>
+        <a class="button" href="https://support.ayakobot.com" target="_blank"
+          >Support</a
+        >
+        <NuxtLink class="button" to="/commands" @click="toggleShow"
+          >Commands</NuxtLink
+        >
+        <a class="button" href="https://invite.ayakobot.com" target="_blank"
+          >Invite</a
+        >
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -116,6 +116,9 @@ NuxtLink:hover,
   align-items: center;
   background-color: var(--base-color);
   margin-top: -0.5rem;
+  z-index: 9;
+  margin-left: 30%;
+  box-shadow: 0 0 0.5em 0.5em var(--base-color);
 }
 
 .showMore {
@@ -166,20 +169,29 @@ NuxtLink:hover,
 .NavBarBox {
   z-index: 10;
   overflow: hidden;
-  background-color: #181818;
+  background-color: var(--base-color);
   position: fixed;
   top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 0.5em 0.5em #181818;
+  box-shadow: 0 0 0.5em 0.5em var(--base-color);
   width: 100%;
 }
 
 .fix {
   position: fixed;
   width: 100%;
-  box-shadow: 0 0 0.5em 0.5em #181818;
   z-index: 10;
+}
+
+.translate-enter-active,
+.translate-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.translate-enter-from,
+.translate-leave-to {
+  transform: translateY(-10rem);
 }
 </style>

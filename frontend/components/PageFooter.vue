@@ -1,3 +1,27 @@
+<script lang="ts">
+export default {
+  data() {
+    return {
+      windowWidth: 0,
+    };
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth;
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+};
+</script>
+
 <template>
   <div class="footer">
     <img
@@ -46,6 +70,12 @@
               src="https://cdn.ayakobot.com/website_assets/greenFlower.png"
             />
             Donate
+            <img
+              v-if="windowWidth < 800"
+              alt=""
+              class="donateFlower2"
+              src="https://cdn.ayakobot.com/website_assets/greenFlower.png"
+            />
           </a>
           <NuxtLink class="button" to="/art">Artwork</NuxtLink>
         </div>
@@ -112,16 +142,34 @@
     margin-bottom: 1rem;
   }
 
-  .row2 {
-    margin-bottom: 1rem;
+  .button {
+    margin: auto;
   }
 
-  .button {
+  .row2 {
+    margin-left: 0rem;
     text-align: center;
+    margin-bottom: 1rem;
+    margin-right: 0rem;
+  }
+
+  .donateFlower {
+    width: 1.5rem;
+    height: 1.5rem;
+    animation: donateFlower infinite 5s linear;
+  }
+  
+  .donateFlower2 {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    animation: donateFlowerInvert infinite 5s linear;
+    margin-top: -0.184rem;
+    margin-left: 0.27rem;
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
   .row2 {
     margin-left: 4rem;
     margin-right: 4rem;
@@ -132,9 +180,24 @@
   width: 1.5rem;
   height: 1.5rem;
   margin-top: -3rem;
-  margin-bottom: -0.3rem;
+  margin-bottom: -0.4rem;
   margin-left: -1.8rem;
   animation: donateFlower infinite 5s linear;
+}
+
+.donateFlower2 {
+  width: 1.5rem;
+  height: 1.5rem;
+  animation: donateFlowerInvert infinite 5s linear;
+}
+
+@keyframes donateFlowerInvert {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: -360deg;
+  }
 }
 
 @keyframes donateFlower {
