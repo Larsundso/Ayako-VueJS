@@ -158,7 +158,7 @@ export default {
     height: 1.5rem;
     animation: donateFlower infinite 5s linear;
   }
-  
+
   .donateFlower2 {
     position: absolute;
     width: 1.5rem;

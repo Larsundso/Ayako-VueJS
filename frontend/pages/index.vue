@@ -1,44 +1,36 @@
-<script lang="ts">
-import { onMounted, onBeforeUnmount } from "vue";
+<script lang="ts" setup>
+let windowWidth = 0;
 
-export default {
-  data() {
-    return {
-      windowWidth: 0,
-    };
-  },
-  setup() {
-    onMounted(() => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-          }
-        });
-      });
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  });
 
-      const hiddenElements = document.querySelectorAll(".hidden");
-      hiddenElements.forEach((el) => observer.observe(el));
-    });
+  const hiddenElements = document.querySelectorAll(".hidden");
+  hiddenElements.forEach((el) => observer.observe(el));
+});
 
-    onBeforeUnmount(() => {
-      window.scrollTo(0, 0);
-    });
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.onResize);
-  },
-  mounted() {
-    this.windowWidth = window.innerWidth;
-    this.$nextTick(() => {
-      window.addEventListener("resize", this.onResize);
-    });
-  },
-  methods: {
-    onResize() {
-      this.windowWidth = window.innerWidth;
-    },
-  },
+onBeforeUnmount(() => {
+  window.scrollTo(0, 0);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", onResize);
+});
+
+onMounted(() => {
+  windowWidth = window.innerWidth;
+  nextTick(() => {
+    window.addEventListener("resize", onResize);
+  });
+});
+
+const onResize = () => {
+  windowWidth = window.innerWidth;
 };
 </script>
 
@@ -187,7 +179,12 @@ export default {
       <span class="footer">Build a secure, streamlined community. </span>
       <br />
     </div>
-    <a class="footerButton button" href="https://invite.ayakobot.com" target="_blank">Get Started</a>
+    <a
+      class="footerButton button"
+      href="https://invite.ayakobot.com"
+      target="_blank"
+      >Get Started</a
+    >
   </div>
 </template>
 

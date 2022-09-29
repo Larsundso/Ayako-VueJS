@@ -8,20 +8,15 @@
       />
       <h1>AyakoBot.com</h1>
       <p>Address not found or under construction</p>
-      <NuxtLink to="/" class="btn">Take me home!</NuxtLink>
+      <NuxtLink to="/" class="button">Take me home!</NuxtLink>
     </div>
     <PageFooter />
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import PageFooter from "@/components/PageFooter.vue";
 import NavBar from "@/components/NavBar.vue";
-export default {
-  props: ["error"],
-  layout: "error",
-  components: { PageFooter, NavBar },
-};
 </script>
 
 <style scoped>
@@ -40,22 +35,5 @@ p {
   flex-direction: column;
   align-items: center;
   margin-bottom: 20rem;
-}
-
-.btn {
-  text-decoration: none;
-  padding: 1em;
-  margin-top: 1em;
-  background-color: #3dff56;
-  border: none;
-  color: #18181b;
-  font-weight: bold;
-  border-radius: 0.5em;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.btn:hover {
-  background-color: #29ab39;
-  color: #d3d3ec;
 }
 </style>
