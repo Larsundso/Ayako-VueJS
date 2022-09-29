@@ -1,6 +1,7 @@
 import type Express from 'express';
 import axios from 'axios';
 import crypto from 'crypto';
+import auth from '../../auth.json' assert { type: 'json' };
 import type GitHub from '../../Typings/GitHub';
 
 export default async (req: Express.Request, res: Express.Response) => {
@@ -54,15 +55,9 @@ export default async (req: Express.Request, res: Express.Response) => {
     }
   });
 
-  axios.post(
-    'https://discord.com/api/webhooks/986792631549964309/34o_sndEhMqLwt8w5mtIIJ8qBIMPimWPHwh6SGTpdDvOS2Fm8CEt7kUEeyF_kty-x_J7?thread_id=986807412906393641',
-    {
+  auth.webhooks.forEach((w) => {
+    axios.post(w, {
       embeds: [embed],
-    },
-  );
-
-  axios.post(
-    'https://discord.com/api/webhooks/996886709973291129/R-mWCU6tEQ4GQ7Whj80qoCSIRAIG7IPJhvMOAb9VW4V4om_j4pw7_m4DbZqxiDymxu4u',
-    { embeds: [embed] },
-  );
+    });
+  });
 };

@@ -1,6 +1,6 @@
-<script>
-import Contributers from "../assets/contributers.json";
-import Contributer from "../componets/Contributers/index.vue";
+<script lang="ts">
+import Contributers from "@/assets/contributers.json";
+import Contributer from "@/componets/Contributers/index.vue";
 
 export default {
   components: {

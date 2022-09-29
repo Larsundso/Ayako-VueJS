@@ -1,5 +1,5 @@
 <script lang="ts">
-import HomePage from "./home.vue";
+import HomePage from "@/pages/home.vue";
 
 export default {
   components: {

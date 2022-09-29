@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
 import { ref } from "vue";
+import NavBarButtons from "@/componets/NavBarButtons.vue";
 const show = ref(false);
 
 export default {
+  components: { NavBarButtons },
   data() {
     return {
       windowWidth: 0,
@@ -36,7 +38,7 @@ export default {
         <img
           alt="Ayako Logo"
           class="ayakoLogo"
-          src="https://cdn.ayakobot.com/website_assets//NavBarIcon.png"
+          src="https://cdn.ayakobot.com/website_assets/NavBarIcon.png"
         />
       </a>
       <span class="ayako bold">Ayako</span>
@@ -44,17 +46,7 @@ export default {
     </div>
 
     <div v-if="windowWidth >= 605" class="buttonBox hiding">
-      <a class="button" href="https://invite.ayakobot.com" target="_blank"
-        >Invite</a
-      >
-      <button class="button" @click="$router.push('commands')">Commands</button>
-      <a class="button" href="https://support.ayakobot.com" target="_blank"
-        >Support</a
-      >
-      <button class="premium button" @click="$router.push('premium')">
-        👑 Premium 👑
-      </button>
-      <button class="button login" @click="$router.push('login')">Login</button>
+      <NavBarButtons />
     </div>
     <img
       v-else
@@ -65,17 +57,7 @@ export default {
     />
   </div>
   <div v-if="show" class="buttonBox">
-    <a class="button" href="https://invite.ayakobot.com" target="_blank"
-      >Invite</a
-    >
-    <button @click="$router.push('commands')">Commands</button>
-    <a class="button" href="https://support.ayakobot.com" target="_blank"
-      >Support</a
-    >
-    <button class="premium" @click="$router.push('premium')">
-      👑 Premium 👑
-    </button>
-    <button class="login" @click="$router.push('login')">Login</button>
+    <NavBarButtons />
   </div>
 </template>
 
@@ -108,30 +90,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.premium {
-  color: var(--gold-color);
-}
-
-.login {
-  color: var(--red-color);
-  margin-right: 1em;
-}
-
-button,
-.button {
-  background-color: transparent;
-  margin-right: 3rem;
-  transition: background-color 0.2s ease-out;
-  border-radius: 1em;
-  padding: 0.5em;
-}
-
-button:hover,
-.button:hover {
-  background-color: var(--noBGSelect-color);
-  transition: background-color 0.2s ease-out;
 }
 
 .ayako {

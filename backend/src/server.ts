@@ -6,23 +6,18 @@ export const app = Express();
 export const server = http.createServer(app);
 export const JSONParser = BodyParser.json();
 export const URLEncodedParser = BodyParser.urlencoded({ extended: false });
-const frontendPath = '/root/Bots/Ayako-VueJS/frontend/dist/index.html';
+const frontendPath = '/root/Bots/Ayako-VueJS/frontend/.output/public/';
 
 server.listen(80);
+app.use(Express.static(frontendPath));
 
 const handleRequest = async (
   req: Express.Request,
   res: Express.Response,
-  _: unknown,
-  sendFrontend: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _: Express.NextFunction,
 ) => {
-  const sendReponse = () => {
-    if (sendFrontend) res.sendFile(frontendPath);
-    else res.sendStatus(400);
-  };
-
   if (!req.headers || !req.headers.host) {
-    sendReponse();
     return;
   }
 
@@ -41,11 +36,11 @@ const handleRequest = async (
       return;
     }
     default: {
-      sendReponse();
+      res.sendStatus(404);
     }
   }
 };
 
-app.post('*', JSONParser, (...args) => handleRequest(...args, false));
+app.post('*', JSONParser, (...args) => handleRequest(...args));
 
-app.get('*', (...args) => handleRequest(...args, true));
+app.get('*', (...args) => handleRequest(...args));

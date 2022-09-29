@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { onMounted, onBeforeUnmount } from "vue";
 
 export default {
@@ -105,12 +105,9 @@ export default {
               Auto-Punishments, Strike-System, Logs, etc.</span
             >
             <br />
-            <button
-              class="learnMoreButton"
-              @click="$router.push(`commands/moderation`)"
-            >
+            <NuxtLink class="learnMoreButton" to="/commands/moderation">
               Learn More ➡
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -129,12 +126,9 @@ export default {
               Messages, Giveaways with Requirements, etc</span
             >
             <br />
-            <button
-              class="learnMoreButton"
-              @click="$router.push(`commands/server`)"
-            >
+            <NuxtLink class="learnMoreButton" to="/commands/server">
               Learn More ➡
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -153,12 +147,9 @@ export default {
               Roles, Self-Roles, etc</span
             >
             <br />
-            <button
-              class="learnMoreButton"
-              @click="$router.push(`commands/roles`)"
-            >
+            <NuxtLink class="learnMoreButton" to="/commands/roles">
               Learn More ➡
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -348,7 +339,7 @@ export default {
 }
 
 .joinButton {
-  animation: 1s ease-in-out 1s both joinButton;
+  animation: 1s ease-in-out 2s both joinButton;
   opacity: 0;
   color: white;
   background-image: linear-gradient(to right, #fe3521, #23d13b);
@@ -368,7 +359,7 @@ export default {
 .inviteButton {
   color: #fe3521;
   background-color: white;
-  animation: 1s ease-in-out 1s both inviteButton;
+  animation: 1s ease-in-out 2s both inviteButton;
   opacity: 0;
   transition: background-color 0.2s, color 0.2s;
 }
@@ -399,7 +390,7 @@ export default {
   width: 2.5rem;
   height: 2.5rem;
   rotate: 0;
-  animation: 1s ease-in-out 1s both greenFlower;
+  animation: 1s ease-in-out 2s both greenFlower;
 }
 
 @keyframes greenFlower {
@@ -419,7 +410,7 @@ export default {
   margin-top: 21rem;
   opacity: 0;
   transform: translateY(5rem);
-  animation: 2s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0s both fifthFlower;
+  animation: 2s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0.5s both fifthFlower;
   rotate: 90deg;
 }
 
@@ -444,7 +435,7 @@ export default {
   margin-top: 11rem;
   opacity: 0;
   transform: translateY(5rem);
-  animation: 1s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0s both forthFlower;
+  animation: 1s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0.5s both forthFlower;
   rotate: -10deg;
 }
 
@@ -469,7 +460,7 @@ export default {
   margin-top: 10rem;
   opacity: 0;
   transform: translateY(10rem);
-  animation: 2s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0s both thirdFlower,
+  animation: 2s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0.5s both thirdFlower,
     90s infinite 2s thirdFlowerRotate linear;
   rotate: 10deg;
 }
@@ -502,7 +493,7 @@ export default {
   margin-top: 12rem;
   opacity: 0;
   transform: translateY(10rem);
-  animation: 3s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0s both secondFlower,
+  animation: 3s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0.5s both secondFlower,
     110s infinite 1s secondFlowerRotate linear;
   rotate: -45deg;
 }
@@ -546,8 +537,8 @@ export default {
   height: 10rem;
   opacity: 0;
   transform: translateY(5rem);
-  animation: 4s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0s both firstFlower,
-    240s infinite 1s firstFlowerRotate linear;
+  animation: 4s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0.5s both firstFlower,
+    240s infinite 0.5s firstFlowerRotate linear;
 }
 
 .header {
@@ -677,11 +668,11 @@ export default {
   .footerFlower2 {
     margin-left: 15vh;
   }
-  
+
   .footerFlower1 {
     margin-left: -15vh;
   }
-  
+
   .secondFlower {
     width: 5rem;
     height: 5rem;
@@ -701,7 +692,6 @@ export default {
     margin-left: 10rem;
     margin-top: 12rem;
   }
-
 
   .forthFlower {
     width: 3rem;

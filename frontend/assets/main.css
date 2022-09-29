@@ -39,7 +39,7 @@ html {
   background: #555;
 }
 
-button, .button {
+button, .button, NuxtLink {
   font-weight: bold;
   text-decoration: none;
   background-color: var(--button-color);
@@ -51,6 +51,6 @@ button, .button {
   color: white;
 }
 
-button:hover, .button:hover {
+button:hover, .button:hover, NuxtLink:hover {
   background-color: var(--button-hover-color);
 }

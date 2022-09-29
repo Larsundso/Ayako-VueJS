@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 export default {
   name: "PageFooter",
 };
@@ -28,15 +28,13 @@ export default {
 
       <div class="buttons">
         <div class="row1">
-          <button class="button" @click="$router.push('commands')">
-            Commands
-          </button>
+          <NuxtLink class="button" to="/commands"> Commands </NuxtLink>
           <a class="button" href="https://support.ayakobot.com" target="_blank"
             >Support</a
           >
-          <button class="premium button" @click="$router.push('premium')">
+          <NuxtLink class="premium button" to="/premium">
             👑 Premium 👑
-          </button>
+          </NuxtLink>
           <a
             class="vote button"
             href="https://top.gg/bot/650691698409734151/vote"
@@ -55,22 +53,18 @@ export default {
             />
             Donate
           </a>
-          <button class="button" @click="$router.push('art')">Artwork</button>
+          <NuxtLink class="button" to="/art">Artwork</NuxtLink>
         </div>
         <div class="row2">
-          <button class="button" @click="support">Animekos</button>
-          <button class="button" @click="$router.push('partners')">
-            Partners
-          </button>
-          <button class="button" @click="$router.push('credits')">
-            Creators
-          </button>
+          <a class="button" href="https://support.ayakobot.com" target="_blank"
+            >Animekos</a
+          >
+          <NuxtLink class="button" to="/partners">Partners</NuxtLink>
+          <NuxtLink class="button" to="/credits">Creators</NuxtLink>
         </div>
         <div class="row3">
-          <button class="button" @click="$router.push('privacy')">
-            Privacy
-          </button>
-          <button class="button" @click="$router.push('terms')">Terms</button>
+          <NuxtLink class="button" to="/privacy">Privacy</NuxtLink>
+          <NuxtLink class="button" to="/terms">Terms</NuxtLink>
         </div>
       </div>
     </div>
