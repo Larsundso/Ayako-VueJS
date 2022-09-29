@@ -1,6 +1,7 @@
 import Express from 'express';
 import http from 'http';
 import BodyParser from 'body-parser';
+import cors from 'cors';
 import './startupTasks/index.js';
 
 export const app = Express();
@@ -11,6 +12,7 @@ const frontendPath = '/root/Bots/Ayako-VueJS/frontend/.output/public/';
 
 server.listen(80);
 app.use(Express.static(frontendPath));
+app.use(cors());
 
 const handleRequest = async (
   req: Express.Request,
