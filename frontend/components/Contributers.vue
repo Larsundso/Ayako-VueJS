@@ -1,14 +1,7 @@
 <script lang="ts">
-
-
 export default {
   props: {
-    contributer: {
-      "username": String,
-      "avatar": String,
-      "socials": Array,
-      "roles": Array
-    }
+    contributer: Object,
   },
 };
 </script>
@@ -16,15 +9,15 @@ export default {
 <template>
   <div class="contributer">
     <div class="name">{{ contributer.username }}</div>
-    <img :src="contributer.avatar" class="pfp" alt=""/>
-    <div class="socials">
+    <img :src="contributer.avatar" class="pfp" alt="" />
+    <div class="socials" v-if="contributer.socials">
       <div v-for="(social, index) of contributer.socials" :key="index">
-        <a :href="social.link" target="_blank">
-          {{ social.type }}
+        <a :href="social" target="_blank" v-if="contributer.type">
+          {{ contributer.type[index] }}
         </a>
       </div>
     </div>
-    <div class="roles">
+    <div class="roles" v-if="contributer.roles">
       <div class="role" v-for="(role, index) of contributer.roles" :key="index">
         {{ role }}
       </div>

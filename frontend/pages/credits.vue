@@ -1,17 +1,8 @@
-<script lang="ts">
-import Contributers from "@/assets/contributers.json";
-import Contributer from "@/components/Contributers/index.vue";
-
-export default {
-  components: {
-    Contributer,
-  },
-  data() {
-    return {
-      Contributers,
-    };
-  },
-};
+<script lang="ts" setup>
+import Contributer from "~~/components/Contributers.vue";
+const { data: Contributers } = await useFetch(
+  "https://api.ayakobot.com/contributers"
+);
 </script>
 
 <template>
