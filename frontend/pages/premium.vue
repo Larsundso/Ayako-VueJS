@@ -1,7 +1,3 @@
-<script lang="ts">
-export default {};
-</script>
-
 <template>
   <div class="main">
     <img alt="" src="https://cdn.ayakobot.com/website_assets/ayakodevil.png" />

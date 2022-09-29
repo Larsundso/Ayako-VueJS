@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: "PageFooter",
-};
-</script>
-
 <template>
   <div class="footer">
     <img

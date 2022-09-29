@@ -1,6 +1,6 @@
 <script lang="ts">
 import { ref } from "vue";
-import NavBarButtons from "@/componets/NavBarButtons.vue";
+import NavBarButtons from "@/components/NavBarButtons.vue";
 const show = ref(false);
 
 export default {
@@ -55,9 +55,9 @@ export default {
       @click="toggleShow()"
       :class="{ 'background-color': show ? 'black' : 'transparent' }"
     />
-  </div>
-  <div v-if="show" class="buttonBox">
-    <NavBarButtons />
+    <div v-if="show" class="buttonBox">
+      <NavBarButtons />
+    </div>
   </div>
 </template>
 

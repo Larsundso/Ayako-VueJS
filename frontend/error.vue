@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts">
-import PageFooter from "@/componets/PageFooter.vue";
-import NavBar from "@/componets/NavBar.vue";
+import PageFooter from "@/components/PageFooter.vue";
+import NavBar from "@/components/NavBar.vue";
 export default {
   props: ["error"],
   layout: "error",
