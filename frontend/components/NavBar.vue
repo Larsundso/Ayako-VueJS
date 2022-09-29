@@ -1,10 +1,8 @@
 <script lang="ts">
 import { ref } from "vue";
-import NavBarButtons from "@/components/NavBarButtons.vue";
 const show = ref(false);
 
 export default {
-  components: { NavBarButtons },
   data() {
     return {
       windowWidth: 0,
@@ -32,36 +30,88 @@ export default {
 </script>
 
 <template>
-  <div class="NavBarBox">
-    <div class="logoBox">
-      <a href="/">
-        <img
-          alt="Ayako Logo"
-          class="ayakoLogo"
-          src="https://cdn.ayakobot.com/website_assets/NavBarIcon.png"
-        />
-      </a>
-      <span class="ayako bold">Ayako</span>
-      <span class="discordBot bold">Discord Bot</span>
-    </div>
+  <div class="fix">
+    <div class="NavBarBox">
+      <div class="logoBox">
+        <a href="/">
+          <img
+            alt="Ayako Logo"
+            class="ayakoLogo"
+            src="https://cdn.ayakobot.com/website_assets/NavBarIcon.png"
+          />
+        </a>
+        <span class="ayako bold">Ayako</span>
+        <span class="discordBot bold">Discord Bot</span>
+      </div>
 
-    <div v-if="windowWidth >= 605" class="buttonBox hiding">
-      <NavBarButtons />
+      <div v-if="windowWidth >= 605" class="buttonBox hiding">
+        <a class="button" href="https://invite.ayakobot.com" target="_blank"
+          >Invite</a
+        >
+        <NuxtLink class="button" to="/commands">Commands</NuxtLink>
+        <a class="button" href="https://support.ayakobot.com" target="_blank"
+          >Support</a
+        >
+        <NuxtLink class="premium button" to="/premium">
+          👑 Premium 👑
+        </NuxtLink>
+        <NuxtLink class="button login" to="/login">Login</NuxtLink>
+      </div>
+      <img
+        v-else
+        src="https://cdn.ayakobot.com/website_assets/more.png"
+        class="showMore"
+        @click="toggleShow()"
+        :class="{ 'background-color': show ? 'black' : 'transparent' }"
+      />
     </div>
-    <img
-      v-else
-      src="https://cdn.ayakobot.com/website_assets/more.png"
-      class="showMore"
-      @click="toggleShow()"
-      :class="{ 'background-color': show ? 'black' : 'transparent' }"
-    />
-    <div v-if="show" class="buttonBox">
-      <NavBarButtons />
+    <div v-if="show" class="expandableButtonBox">
+      <NuxtLink class="button login" to="/login">Login</NuxtLink>
+      <NuxtLink class="premium button" to="/premium"> 👑 Premium 👑 </NuxtLink>
+      <a class="button" href="https://support.ayakobot.com" target="_blank"
+        >Support</a
+      >
+      <NuxtLink class="button" to="/commands">Commands</NuxtLink>
+      <a class="button" href="https://invite.ayakobot.com" target="_blank"
+        >Invite</a
+      >
     </div>
   </div>
 </template>
 
 <style scoped>
+.premium {
+  color: var(--gold-color);
+}
+
+.login {
+  color: var(--red-color);
+  margin-right: 1em;
+}
+
+NuxtLink,
+.button {
+  background-color: transparent;
+  margin-right: 3rem;
+  transition: background-color 0.2s ease-out;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+
+NuxtLink:hover,
+.button:hover {
+  background-color: var(--noBGSelect-color);
+  transition: background-color 0.2s ease-out;
+}
+.expandableButtonBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--base-color);
+  margin-top: -0.6rem;
+  transition: all 0.5s ease-in-out linear;
+}
+
 .showMore {
   width: 1.5em;
   margin-right: 2em;
@@ -70,10 +120,6 @@ export default {
 @media (max-width: 600px) {
   .hiding {
     display: none;
-  }
-
-  .NavBarBox {
-    display: initial;
   }
 
   .logoBox {
@@ -122,5 +168,12 @@ export default {
   align-items: center;
   box-shadow: 0 0 0.5em 0.5em #181818;
   width: 100%;
+}
+
+.fix {
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 0 0.5em 0.5em #181818;
+  z-index: 10;
 }
 </style>

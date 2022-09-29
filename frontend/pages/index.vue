@@ -2,6 +2,11 @@
 import { onMounted, onBeforeUnmount } from "vue";
 
 export default {
+  data() {
+    return {
+      windowWidth: 0,
+    };
+  },
   setup() {
     onMounted(() => {
       const observer = new IntersectionObserver((entries) => {
@@ -19,6 +24,20 @@ export default {
     onBeforeUnmount(() => {
       window.scrollTo(0, 0);
     });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth;
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
   },
 };
 </script>
@@ -257,6 +276,7 @@ export default {
   translate: 0;
   transition: 0.2s translate linear;
   color: black;
+  font-weight: bold;
 }
 
 .learnMoreButton:hover {
@@ -712,6 +732,144 @@ export default {
   .fifthFlower {
     margin-left: 14rem;
     margin-top: 20rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .buttonsBox {
+    margin-top: 5rem;
+    flex-direction: column;
+  }
+
+  .fifthFlower {
+    margin-left: 11rem;
+    margin-top: 20rem;
+  }
+
+  @keyframes joinButton {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(1.5rem);
+    }
+  }
+
+  @keyframes inviteButton {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-1.5rem);
+    }
+  }
+
+  .header {
+    margin-top: 0;
+  }
+
+  .feature {
+    max-width: 15rem;
+    margin-left: 2rem;
+  }
+
+  .featureBox {
+    margin-left: 8rem;
+    max-width: 10rem;
+  }
+
+  .featureImage {
+    max-width: 20rem;
+  }
+
+  .secondFlower {
+    width: 5rem;
+    height: 5rem;
+    margin-left: -11rem;
+    margin-top: 17rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .footerFlower1 {
+    margin-top: 9vh;
+  }
+
+  .secondFlower {
+    width: 4rem;
+    height: 4rem;
+    margin-left: -10rem;
+  }
+  .fifthFlower {
+    margin-left: 10rem;
+    margin-top: 20rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .thirdFlower {
+    width: 4rem;
+    height: 4rem;
+    margin-left: 7rem;
+    margin-top: 13rem;
+  }
+
+  .firstFlower {
+    width: 6rem;
+    height: 6rem;
+    margin-top: 8rem;
+  }
+
+  .secondFlower {
+    display: none;
+  }
+
+  .feature {
+    max-width: 13rem;
+    margin-left: 2rem;
+  }
+
+  .featureBox {
+    margin-left: 5rem;
+    margin-top: -10 em;
+    max-width: 9rem;
+  }
+
+  .featureImage {
+    max-width: 17rem;
+    margin-left: 1rem;
+  }
+
+  .featureTitle {
+    font-size: 1rem;
+  }
+
+  .featureDescription {
+    font-size: 0.8rem;
+  }
+
+  .learnMoreButton {
+    font-size: 0.8rem;
+  }
+
+  .fifthFlower {
+    display: none;
+  }
+
+  .footerFlower1 {
+    display: none;
+  }
+
+  .main {
+    overflow-x: hidden;
+  }
+
+  .hidden {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
   }
 }
 </style>
