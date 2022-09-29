@@ -57,13 +57,13 @@ export default {
         </NuxtLink>
         <NuxtLink class="button login" to="/login">Login</NuxtLink>
       </div>
-      <img
-        v-else
-        src="https://cdn.ayakobot.com/website_assets/more.png"
-        class="showMore"
-        @click="toggleShow()"
-        :class="{ 'background-color': show ? 'black' : 'transparent' }"
-      />
+      <button v-else @click="toggleShow()">
+        <img
+          src="https://cdn.ayakobot.com/website_assets/more.png"
+          class="showMore"
+          :class="{ 'background-color': show ? 'black' : 'transparent' }"
+        />
+      </button>
     </div>
     <div v-if="show" class="expandableButtonBox">
       <NuxtLink class="button login" to="/login" @click="toggleShow()"
