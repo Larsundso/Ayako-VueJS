@@ -86,6 +86,11 @@ export default {
 </template>
 
 <style scoped>
+
+  button { 
+    background: transparent;
+    margin-right: -1rem;
+  }
 .premium {
   color: var(--gold-color);
 }
