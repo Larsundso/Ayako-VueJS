@@ -514,7 +514,7 @@ export default {
   opacity: 0;
   transform: translateY(10rem);
   animation: 3s cubic-bezier(0.03, 0.82, 0.13, 1.04) 0.5s both secondFlower,
-    110s infinite 1s secondFlowerRotate linear;
+    110s infinite 1.5s secondFlowerRotate linear;
   rotate: -45deg;
 }
 
