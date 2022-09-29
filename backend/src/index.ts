@@ -1,6 +1,7 @@
+import readline from 'readline';
 import './server.js';
 import './socketIOHandler.js';
-import readline from 'readline';
+import './DataBase.js';
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 rl.on('line', async (msg) => {

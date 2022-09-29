@@ -1,6 +1,7 @@
 import Express from 'express';
 import http from 'http';
 import BodyParser from 'body-parser';
+import './startupTasks/index.js';
 
 export const app = Express();
 export const server = http.createServer(app);
