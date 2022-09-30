@@ -40,7 +40,7 @@ Jobs.scheduleJob('0 0 0 * * *', async () => {
         [
           `${responseBody.username}#${responseBody.discriminator}`,
           `https://cdn.discordapp.com/avatars/534783899331461123/${responseBody.avatar}.${
-            responseBody.avatar.startsWith('a_') ? 'gif' : 'png'
+            responseBody.avatar?.startsWith('a_') ? 'gif' : 'png'
           }`,
           row.userid,
         ],

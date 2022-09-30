@@ -7,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+import VueAnalytics from "vue-analytics";
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 
@@ -20,10 +21,69 @@ useHead({
       type: "image/x-icon",
       href: "https://cdn.ayakobot.com/website_assets/ayako.ico",
     },
+    {
+      rel: "canonical",
+      href: "https://ayakobot.com/"
+    }
   ],
+
   meta: [
     {
+      name: "twitter:image",
+      content: "https://cdn.ayakobot.com/website_assets/Icon.png"
+    },
+    {
+      name: "og:image",
+      content: "https://cdn.ayakobot.com/website_assets/Icon.png"
+    },
+    {
+      name: "og:image:secure_url",
+      content: "https://cdn.ayakobot.com/website_assets/Icon.png"
+    },
+    {
+      name: "og:image:width",
+      content: "982"
+    },
+    {
+      name: "og:image:height",
+      content: "1016"
+    },
+    {
+      name: "og:image:type",
+      content: "image/png"
+    },
+    {
+      name: "og:type",
+      content: "website",
+    },
+    {
+      name: "og:url",
+      content: "https://ayakobot.com/",
+    },
+    {
+      name: "og:site_name",
+      content: "AyakoBot.com",
+    },
+    {
+      name: "twitter:title",
+      content: "Ayako - Discord Bot",
+    },
+    {
+      name: "og:title",
+      content: "Ayako - Discord Bot",
+    },
+    {
       name: "description",
+      content:
+        "Ayako provides you with tons of optimized and easy to use features for your Discord experience.",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "Ayako provides you with tons of optimized and easy to use features for your Discord experience.",
+    },
+    {
+      name: "og:description",
       content:
         "Ayako provides you with tons of optimized and easy to use features for your Discord experience.",
     },
@@ -38,5 +98,26 @@ useHead({
       content: "bEQNoorq512jiwfd5Jm2rJN_1t-zEoB4qRS-3JUiFAE",
     },
   ],
+});
+
+onMounted(() => {
+  (function (h, o, t, j, a, r) {
+    // @ts-ignore
+    h.hj =
+      // @ts-ignore
+      h.hj ||
+      function () {
+        // @ts-ignore
+        (h.hj.q = h.hj.q || []).push(arguments);
+      };
+    // @ts-ignore
+    h._hjSettings = { hjid: 2589609, hjsv: 6 };
+    a = o.getElementsByTagName("head")[0];
+    r = o.createElement("script");
+    r.async = 1;
+    // @ts-ignore
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
 });
 </script>

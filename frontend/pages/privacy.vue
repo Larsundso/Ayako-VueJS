@@ -188,7 +188,7 @@
               <strong>Session Cookies</strong>
             </div>
             I use Session Cookies to keep you logged in to Discord on my site. I
-            also use Google Analytics, which uses cookies for general
+            also use Hotjar, which uses cookies for general
             statistical data to help me learn and grow about how to make a
             better user experience.
           </li>
@@ -456,28 +456,23 @@
         <ul class="paragraph-list">
           <li class="paragraph-list-item">
             <div class="paragraph-body">
-              <strong>Google Analytics</strong>
+              <strong>Hotjar</strong>
             </div>
             <div class="paragraph-body">
-              Google Analytics is a web analytics service offered by Google that
-              tracks and reports website traffic. Google uses the data collected
+              Hotjar is a web analytics service that
+              tracks and reports website traffic. Hotjar uses the data collected
               to track and monitor the use of my Service. This data is shared
-              with other Google services. Google may use the collected data to
-              contextualise and personalise the ads of its own advertising
-              network.
+              with other Hotjar services.
             </div>
             <div class="paragraph-body">
               You can opt-out of having made your activity on the Service
-              available to Google Analytics by installing the Google Analytics
-              opt-out browser add-on. The add-on prevents the Google Analytics
-              JavaScript (ga.js, analytics.js and dc.js) from sharing
-              information with Google Analytics about visits activity.
+              available to Hotjar by disabling Third-Party Cookies.
             </div>
             <div class="paragraph-body">
-              For more information on the privacy practices of Google, please
-              visit the Google Privacy & Terms web page:
-              <a href="https://policies.google.com/privacy">
-                Google Privacy Policy
+              For more information on the privacy practices of Hotjar, please
+              visit the Hotjar Privacy & Terms web page:
+              <a href="https://www.hotjar.com/privacy/">
+                Hotjar Privacy Policy
               </a>
             </div>
           </li>
