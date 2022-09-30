@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import VueAnalytics from "vue-analytics";
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 
@@ -17,40 +16,40 @@ useHead({
   charset: "utf-8",
   link: [
     {
+      rel: "canonical",
+      href: "https://ayakobot.com/",
+    },
+    {
       rel: "icon",
       type: "image/x-icon",
       href: "https://cdn.ayakobot.com/website_assets/ayako.ico",
     },
-    {
-      rel: "canonical",
-      href: "https://ayakobot.com/"
-    }
   ],
 
   meta: [
     {
       name: "twitter:image",
-      content: "https://cdn.ayakobot.com/website_assets/Icon.png"
+      content: "https://cdn.ayakobot.com/website_assets/Icon.png",
     },
     {
       name: "og:image",
-      content: "https://cdn.ayakobot.com/website_assets/Icon.png"
+      content: "https://cdn.ayakobot.com/website_assets/Icon.png",
     },
     {
       name: "og:image:secure_url",
-      content: "https://cdn.ayakobot.com/website_assets/Icon.png"
+      content: "https://cdn.ayakobot.com/website_assets/Icon.png",
     },
     {
       name: "og:image:width",
-      content: "982"
+      content: "982",
     },
     {
       name: "og:image:height",
-      content: "1016"
+      content: "1016",
     },
     {
       name: "og:image:type",
-      content: "image/png"
+      content: "image/png",
     },
     {
       name: "og:type",
