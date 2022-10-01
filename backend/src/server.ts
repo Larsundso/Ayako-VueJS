@@ -13,6 +13,17 @@ const frontendPath = '/root/Bots/Ayako-VueJS/frontend/.output/public/';
 server.listen(80);
 app.use(Express.static(frontendPath));
 app.use(cors());
+app.use(
+  BodyParser.json({
+    verify: (req, _, buf, encoding) => {
+      if (buf && buf.length) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        req.rawBody = buf.toString(encoding || 'utf8');
+      }
+    },
+  }),
+);
 
 const handleRequest = async (
   req: Express.Request,

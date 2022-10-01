@@ -16,6 +16,7 @@ export default async (req: Express.Request, res: Express.Response) => {
 
     imported(req, res);
   } catch (e) {
+    console.log(e);
     res.sendStatus(404);
   }
 };
