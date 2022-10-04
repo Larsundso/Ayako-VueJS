@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Cookies />
     <NavBar />
     <NuxtPage />
     <PageFooter />
@@ -9,6 +10,7 @@
 <script lang="ts" setup>
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
+import Cookies from "@/components/Cookies.vue";
 
 useHead({
   title: "Ayako",

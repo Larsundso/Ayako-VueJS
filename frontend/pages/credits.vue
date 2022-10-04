@@ -11,19 +11,15 @@ const Contributers = await contributersResponse.json();
     <img alt="" src="https://cdn.ayakobot.com/website_assets/ayakoLove.png" />
     <div><h1>Creators & Credits</h1></div>
 
-    <Suspense>
-      <div class="contributers">
-        <span
-          class="contributer"
-          v-for="(contributer, i) of Contributers"
-          :key="i"
-        >
-          <Contributer :contributer="contributer" />
-        </span>
-      </div>
-
-      <template #fallback> Data Loading... </template>
-    </Suspense>
+    <div class="contributers">
+      <span
+        class="contributer"
+        v-for="(contributer, i) of Contributers"
+        :key="i"
+      >
+        <Contributer :contributer="contributer" />
+      </span>
+    </div>
   </div>
 </template>
 

@@ -41,7 +41,7 @@ export default {
         <span class="discordBot bold">Discord Bot</span>
       </div>
 
-      <div v-if="windowWidth >= 605" class="buttonBox hiding">
+      <div v-if="windowWidth >= 950" class="buttonBox hiding">
         <a class="button" href="https://invite.ayakobot.com" target="_blank"
           >Invite</a
         >
@@ -124,7 +124,7 @@ NuxtLink:hover,
   margin-right: 2em;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 950px) {
   .hiding {
     display: none;
   }
@@ -146,7 +146,7 @@ NuxtLink:hover,
 }
 
 .ayako {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 .bold {
