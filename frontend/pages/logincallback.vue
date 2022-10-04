@@ -22,7 +22,6 @@ onMounted(() => {
   accessToken.value = token;
   success.value = true;
 
-  return;
   setTimeout(() => {
     location.href = "/";
   }, 1000);
@@ -32,7 +31,7 @@ onMounted(() => {
 <template>
   <div>
     <div v-if="success === true" class="main">
-      <img src="https://cdn.ayakobot.com/Tick.gif" class="tick" />
+      <img src="https://cdn.ayakobot.com/Tick.png" class="tick" />
       <p>Success!</p>
       <p>
         <img
@@ -41,7 +40,10 @@ onMounted(() => {
         />Redirecting...
       </p>
     </div>
-    <div v-else-if="success === false" class="main"><p>Error</p></div>
+    <div v-else-if="success === false" class="main">
+      <img src="https://cdn.ayakobot.com/Cross.png" class="cross" />
+      <p>Error</p>
+    </div>
     <div v-else class="main">
       <img src="https://cdn.ayakobot.com/Loading.gif" class="loading" />
       <p>Loading</p>
@@ -62,7 +64,8 @@ p {
 }
 
 .loading,
-.tick {
+.tick,
+.cross {
   margin: auto;
   width: 2em;
 }

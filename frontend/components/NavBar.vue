@@ -1,9 +1,24 @@
 <script lang="ts">
+const avatar = ref(null);
+const tag = ref(null);
+const hovering = ref(false);
+
 export default {
+  setup() {
+    const cookieAvatar = useCookie("avatar");
+    avatar.value = cookieAvatar.value;
+
+    const cookieTag = useCookie("tag");
+    tag.value = cookieTag.value;
+  },
   data() {
     return {
+      accessToken: true,
       windowWidth: 0,
       show: false,
+      avatar,
+      tag,
+      hovering,
     };
   },
   mounted() {
@@ -21,6 +36,9 @@ export default {
     },
     toggleShow() {
       this.show = !this.show;
+    },
+    toggleHover(state: boolean) {
+      hovering.value = state;
     },
   },
 };
@@ -52,7 +70,21 @@ export default {
         <NuxtLink class="premium button" to="/premium">
           👑 Premium 👑
         </NuxtLink>
-        <NuxtLink class="button login" to="/login">Login</NuxtLink>
+        <NuxtLink class="button login" to="/login" v-if="!accessToken"
+          >Login</NuxtLink
+        >
+        <div
+          v-else
+          class="profile"
+          @mouseover="toggleHover(true)"
+          @mouseleave="toggleHover(false)"
+        >
+          <div v-if="!hover" class="profile">
+            <img :src="avatar" class="pfp" />
+            <p class="tag">{{ tag }}</p>
+          </div>
+          <div v-else>Log Out</div>
+        </div>
       </div>
       <img
         v-else
@@ -68,7 +100,7 @@ export default {
           >Login</NuxtLink
         >
         <NuxtLink class="premium button" to="/premium" @click="toggleShow">
-          👑 Premium 👑
+          👑&nbsp;Premium&nbsp;👑
         </NuxtLink>
         <a class="button" href="https://support.ayakobot.com" target="_blank"
           >Support</a
@@ -85,6 +117,18 @@ export default {
 </template>
 
 <style scoped>
+.pfp {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 2em;
+  margin-right: 0.5rem;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
 .premium {
   color: var(--gold-color);
 }
@@ -136,6 +180,8 @@ NuxtLink:hover,
 }
 
 .buttonBox {
+  display: flex;
+  align-items: center;
   margin-right: 1rem;
   margin-left: 2rem;
 }

@@ -12,6 +12,25 @@ import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 import Cookies from "@/components/Cookies.vue";
 
+const accessToken = useCookie("accessToken");
+if (accessToken) {
+  const userData = await fetch("https://discord.com/api/users/@me", {
+    headers: {
+      authorization: `Bearer ${accessToken.value}`,
+    },
+  }).then((r) => r.json());
+
+  const tag = useCookie("tag");
+  const avatar = useCookie("avatar");
+  const id = useCookie("id");
+
+  tag.value = `${userData.username}#${userData.discriminator}`;
+  avatar.value = `https://cdn.discordapp.com/avatars/${userData.id}/${
+    userData.avatar
+  }${userData.avatar?.startsWith("a_") ? ".gif" : ".png"}`;
+  id.value = userData.value;
+}
+
 useHead({
   title: "Ayako",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
