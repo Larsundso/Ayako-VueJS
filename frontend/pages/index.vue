@@ -313,7 +313,6 @@ const onResize = () => {
 }
 
 .scrollDown {
-  position: fixed;
   bottom: 1rem;
   width: 5rem;
   margin-left: -0.5rem;

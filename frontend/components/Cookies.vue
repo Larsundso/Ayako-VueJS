@@ -1,38 +1,22 @@
 <script lang="ts">
-import { useCookie } from "#app";
-
 export default {
-  setup() {
-    const agreed = useCookie("agreedToCookies");
-
-    return {
-      agreed,
-    };
-  },
-  methods: {
-    setCookie() {
-      const agreed = useCookie("agreedToCookies");
-      agreed.value = "true";
-      location.reload();
-    },
-  },
+  emits: ["acceptedCookies"],
 };
 </script>
 
 <template>
-  <div v-if="!agreed" class="modalMask">
+  <div class="modalMask">
     <div class="modalWrapper">
       <div class="modalContainer">
         <p>
-          This Website uses Cookies to work properly and save Session Details
+          This Website uses Cookies to work properly, save Session Details and
+          other Information
         </p>
         <div class="buttonBox">
           <NuxtLink class="button privacy" to="/privacy"
             >Find out how we handle your Data</NuxtLink
           >
-          <button @click="setCookie">
-            Got it!
-          </button>
+          <button @click="$emit('acceptedCookies')">Got it!</button>
         </div>
       </div>
     </div>

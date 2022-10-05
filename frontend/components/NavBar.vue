@@ -83,9 +83,13 @@ export default {
         <NuxtLink class="premium button" to="/premium">
           👑 Premium 👑
         </NuxtLink>
-        <NuxtLink class="button login" to="/login" v-if="!accessToken"
-          >Login</NuxtLink
+        <NuxtLink
+          class="button login"
+          to="https://ayakobot.com/login"
+          v-if="!accessToken"
         >
+          Login
+        </NuxtLink>
         <div v-else class="profile">
           <div class="profileButton">
             <img :src="avatar" class="pfp" />
@@ -107,7 +111,10 @@ export default {
     </div>
     <transition name="translate" mode="out-in">
       <div class="expandableButtonBox" v-if="show">
-        <NuxtLink class="button login" to="/login" @click="toggleShow"
+        <NuxtLink
+          class="button login"
+          to="https://ayakobot.com/login"
+          @click="toggleShow"
           >Login</NuxtLink
         >
         <NuxtLink class="premium button" to="/premium" @click="toggleShow">

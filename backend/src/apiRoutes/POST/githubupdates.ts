@@ -6,7 +6,7 @@ import type GitHub from '../../Typings/GitHub';
 
 export default async (req: Express.Request, res: Express.Response) => {
   const sig = Buffer.from(req.get('X-Hub-Signature-256') || '', 'utf8');
-  const hmac = crypto.createHmac('sha256', 'ibhqCs^j\\Y7[7L#(;y<:HhyA,&C?~gM%');
+  const hmac = crypto.createHmac('sha256', auth.cryptoSecret);
   const digest = Buffer.from(
     `sha256=${hmac.update((req as unknown as { rawBody: never }).rawBody).digest('hex')}`,
     'utf8',
