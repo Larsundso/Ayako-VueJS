@@ -1,7 +1,6 @@
 <script lang="ts">
 const avatar = ref(null);
 const tag = ref(null);
-const hovering = ref(false);
 
 export default {
   setup() {
@@ -13,12 +12,11 @@ export default {
   },
   data() {
     return {
-      accessToken: true,
+      accessToken: useCookie("accessToken")?.value,
       windowWidth: 0,
       show: false,
       avatar,
       tag,
-      hovering,
     };
   },
   mounted() {
@@ -37,8 +35,23 @@ export default {
     toggleShow() {
       this.show = !this.show;
     },
-    toggleHover(state: boolean) {
-      hovering.value = state;
+    logout() {
+      const accessToken = useCookie("accessToken");
+      const cookieAvatar = useCookie("avatar");
+      const cookieTag = useCookie("tag");
+
+      cookieTag.value = null;
+      cookieAvatar.value = null;
+      accessToken.value = null;
+      avatar.value = null;
+      tag.value = null;
+
+      location.href = "/";
+    },
+    dashboard() {
+      location.href = `https://dashboard.ayakobot.com/login?access_token=${
+        useCookie("accessToken").value
+      }`;
     },
   },
 };
@@ -73,17 +86,15 @@ export default {
         <NuxtLink class="button login" to="/login" v-if="!accessToken"
           >Login</NuxtLink
         >
-        <div
-          v-else
-          class="profile"
-          @mouseover="toggleHover(true)"
-          @mouseleave="toggleHover(false)"
-        >
-          <div v-if="!hover" class="profile">
+        <div v-else class="profile">
+          <div class="profileButton">
             <img :src="avatar" class="pfp" />
-            <p class="tag">{{ tag }}</p>
+            <div class="tag">{{ tag }}</div>
           </div>
-          <div v-else>Log Out</div>
+          <div class="profileButtons">
+            <button class="pButton" @click="dashboard">Dashboard</button
+            ><button class="pButton logout" @click="logout">Logout</button>
+          </div>
         </div>
       </div>
       <img
@@ -117,14 +128,58 @@ export default {
 </template>
 
 <style scoped>
+.profileButtons {
+  display: flex;
+  margin-top: 0.1rem;
+  justify-content: space-between;
+}
+.pButton {
+  background: transparent;
+  padding: 0.2em;
+}
+
+.pButton:hover {
+  background-color: var(--base-color);
+}
+
+.logout {
+  color: var(--red-color);
+}
+
+.tag {
+  font-size: 0.8em;
+  font-weight: bold;
+}
 .pfp {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1em;
+  height: 1em;
   border-radius: 2em;
   margin-right: 0.5rem;
 }
 
 .profile {
+  background-color: var(--noBGSelect-color);
+  border-radius: 1em;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileOptions {
+  margin-top: 3rem;
+  z-index: 9;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--noBGSelect-color);
+  z-index: 9;
+  width: 4rem;
+  right: 0;
+  box-shadow: 0 0 0.5em 0.5em var(--base-color);
+}
+
+.profileButton {
   display: flex;
   align-items: center;
 }

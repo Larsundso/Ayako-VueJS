@@ -62,8 +62,4 @@ app.get('/login', (_, res) =>
     'https://discord.com/api/oauth2/authorize?client_id=650691698409734151&redirect_uri=https%3A%2F%2Fayakobot.com%2Flogincallback&response_type=token&scope=identify%20guilds%20guilds.join',
   ),
 );
-app.get('/logincallback', (req, res) => {
-  console.log(req.query);
-  res.send(200);
-});
 app.get('*', (...args) => handleRequest(...args));
