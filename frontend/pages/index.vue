@@ -314,7 +314,6 @@ const onResize = () => {
   margin-left: -0.5rem;
   animation: 1s ease-in-out 2s both scrollDown;
   opacity: 0;
-  z-index: 10;
 }
 
 @keyframes scrollDown {

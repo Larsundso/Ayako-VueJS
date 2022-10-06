@@ -115,7 +115,23 @@ export default {
           class="button login"
           to="https://ayakobot.com/login"
           @click="toggleShow"
+          v-if="!accessToken"
           >Login</NuxtLink
+        >
+        <div v-else class="profileMobile">
+          <div class="profileButtonMobile">
+            <img :src="avatar" class="pfp" />
+            <div class="tag">{{ tag }}</div>
+          </div>
+          <div class="profileButtonsMobile">
+            <button class="pButtonMobile" @click="dashboard">Dashboard</button
+            ><button class="pButtonMobile logout" @click="logout">
+              Logout
+            </button>
+          </div>
+        </div>
+        <a class="button" href="https://invite.ayakobot.com" target="_blank"
+          >Invite</a
         >
         <NuxtLink class="premium button" to="/premium" @click="toggleShow">
           👑&nbsp;Premium&nbsp;👑
@@ -126,27 +142,42 @@ export default {
         <NuxtLink class="button" to="/commands" @click="toggleShow"
           >Commands</NuxtLink
         >
-        <a class="button" href="https://invite.ayakobot.com" target="_blank"
-          >Invite</a
-        >
       </div>
     </transition>
   </div>
 </template>
 
 <style scoped>
-.profileButtons {
+.profileMobile {
+  margin-top: 1rem;
+  margin-right: 3rem;
+}
+
+.profileButtons,
+.profileButtonsMobile {
   display: flex;
-  margin-top: 0.1rem;
+  margin-top: 0.5rem;
   justify-content: space-between;
 }
-.pButton {
+
+.profileButtonsMobile {
+  flex-direction: column;
+  justify-content: center;
+}
+.pButton,
+.pButtonMobile {
   background: transparent;
   padding: 0.2em;
 }
 
-.pButton:hover {
+.pButton:hover,
+.pButtonMobile:hover {
   background-color: var(--base-color);
+}
+
+.pButtonMobile {
+  font-size: 1rem;
+  margin-top: 0.3rem;
 }
 
 .logout {
@@ -164,7 +195,8 @@ export default {
   margin-right: 0.5rem;
 }
 
-.profile {
+.profile,
+.profileMobile {
   background-color: var(--noBGSelect-color);
   border-radius: 1em;
   padding: 0.5em;
@@ -172,21 +204,8 @@ export default {
   flex-direction: column;
 }
 
-.profileOptions {
-  margin-top: 3rem;
-  z-index: 9;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--noBGSelect-color);
-  z-index: 9;
-  width: 4rem;
-  right: 0;
-  box-shadow: 0 0 0.5em 0.5em var(--base-color);
-}
-
-.profileButton {
+.profileButton,
+.profileButtonMobile {
   display: flex;
   align-items: center;
 }
@@ -289,6 +308,7 @@ NuxtLink:hover,
   position: fixed;
   width: 100%;
   z-index: 10;
+  overflow-x: hidden;
 }
 
 .translate-enter-active,
@@ -298,6 +318,6 @@ NuxtLink:hover,
 
 .translate-enter-from,
 .translate-leave-to {
-  transform: translateY(-10rem);
+  transform: translateY(-20rem);
 }
 </style>

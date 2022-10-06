@@ -71,6 +71,10 @@ export default {
   width: 100%;
 }
 
+.text {
+  text-align: center;
+}
+
 @media (max-width: 1150px) {
   .text,
   .main,

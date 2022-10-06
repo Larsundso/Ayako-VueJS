@@ -132,7 +132,7 @@ onMounted(() => {
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
 });
 
-onBeforeMount(() => {
+onBeforeUnmount(() => {
   window.scrollTo(0, 0);
 });
 </script>
