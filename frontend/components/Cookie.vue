@@ -1,6 +1,4 @@
 <script>
-import { defineComponent } from "@vue/composition-api";
-
 export default {
   methods: {
     acceptedCookies() {
@@ -71,5 +69,29 @@ export default {
 .main {
   position: fixed;
   width: 100%;
+}
+
+@media (max-width: 1150px) {
+  .text,
+  .main,
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image {
+    margin: 0;
+  }
+
+  .privacy {
+    margin-left: 0;
+  }
+
+  .consent {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 </style>
