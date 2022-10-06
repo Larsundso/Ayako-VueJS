@@ -2,8 +2,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  target: "server",
-  ssr: true,
+  target: "static",
   modules: ["@vueuse/nuxt"],
   nitro: {
     preset: "nitro-prerender",

@@ -3,7 +3,15 @@ import Contributer from "~~/components/Contributers.vue";
 const contributersResponse = await fetch(
   "https://api.ayakobot.com/contributers"
 );
-const Contributers = await contributersResponse.json();
+const Contributers = (
+  (await contributersResponse.json()) as {
+    userid: string;
+    username: string;
+    avatar: string;
+    socials?: string[];
+    roles?: string[];
+  }[]
+).sort((a, b) => b.roles?.length - a.roles?.length);
 </script>
 
 <template>

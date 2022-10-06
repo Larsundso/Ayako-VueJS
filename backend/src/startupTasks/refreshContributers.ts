@@ -33,13 +33,14 @@ Jobs.scheduleJob('0 0 0 * * *', async () => {
         username: string;
         discriminator: string;
         avatar: string;
+        id: string;
       };
 
       await DataBase.query(
         `UPDATE contributers SET username = $1, avatar = $2 WHERE userid = $3;`,
         [
           `${responseBody.username}#${responseBody.discriminator}`,
-          `https://cdn.discordapp.com/avatars/534783899331461123/${responseBody.avatar}.${
+          `https://cdn.discordapp.com/avatars/${responseBody.id}/${responseBody.avatar}.${
             responseBody.avatar?.startsWith('a_') ? 'gif' : 'png'
           }`,
           row.userid,

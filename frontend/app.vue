@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
-import Cookies from "@/components/Cookies.vue";
 
 const accessToken = useCookie("accessToken");
 if (accessToken) {
@@ -130,26 +129,11 @@ onMounted(() => {
     r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
     a.appendChild(r);
   })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-
-  console.log(
-    useCookie(`acceptedCookie`).value,
-    typeof useCookie(`acceptedCookie`).value
-  );
 });
-
-const accptedCookies = () => {
-  useCookie(`acceptedCookie`).value = "true";
-  location.reload();
-};
 </script>
 
 <template>
   <div>
-    <Cookies
-      v-if="String(useCookie(`acceptedCookie`).value) === String(undefined)"
-      @acceptedCookies="accptedCookies()"
-      :accepted="Boolean(useCookie(`acceptedCookie`).value)"
-    />
     <NavBar />
     <NuxtPage />
     <PageFooter />
