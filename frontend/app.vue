@@ -1,9 +1,20 @@
+<template>
+  <div>
+    <NavBar />
+    <Cookie v-if="!acceptedCookies" />
+    <NuxtPage />
+    <PageFooter />
+  </div>
+</template>
+
 <script lang="ts" setup>
 import NavBar from "@/components/NavBar.vue";
 import PageFooter from "@/components/PageFooter.vue";
 import Cookie from "@/components/Cookie.vue";
 
 const accessToken = useCookie("accessToken");
+const acceptedCookies = useCookie("acceptedCookies");
+
 if (accessToken) {
   const userData = await fetch("https://discord.com/api/users/@me", {
     headers: {
@@ -112,36 +123,29 @@ useHead({
 });
 
 onMounted(() => {
-  (function (h, o, t, j, a, r) {
-    // @ts-ignore
-    h.hj =
+  if (acceptedCookies) {
+    (function (h, o, t, j, a, r) {
       // @ts-ignore
-      h.hj ||
-      function () {
+      h.hj =
         // @ts-ignore
-        (h.hj.q = h.hj.q || []).push(arguments);
-      };
-    // @ts-ignore
-    h._hjSettings = { hjid: 2589609, hjsv: 6 };
-    a = o.getElementsByTagName("head")[0];
-    r = o.createElement("script");
-    r.async = 1;
-    // @ts-ignore
-    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-    a.appendChild(r);
-  })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+        h.hj ||
+        function () {
+          // @ts-ignore
+          (h.hj.q = h.hj.q || []).push(arguments);
+        };
+      // @ts-ignore
+      h._hjSettings = { hjid: 2589609, hjsv: 6 };
+      a = o.getElementsByTagName("head")[0];
+      r = o.createElement("script");
+      r.async = 1;
+      // @ts-ignore
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+  }
 });
 
 onBeforeUnmount(() => {
   window.scrollTo(0, 0);
 });
 </script>
-
-<template>
-  <div>
-    <NavBar />
-    <Cookie />
-    <NuxtPage />
-    <PageFooter />
-  </div>
-</template>

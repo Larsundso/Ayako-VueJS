@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <div class="main" v-if="!useCookie('acceptedCookies').value">
+  <div class="main">
     <div class="text">
       <img
         class="image"
