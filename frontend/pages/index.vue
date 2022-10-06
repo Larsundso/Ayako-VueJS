@@ -15,10 +15,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  window.scrollTo(0, 0);
-});
-
-onBeforeUnmount(() => {
   window.removeEventListener("resize", onResize);
 });
 
