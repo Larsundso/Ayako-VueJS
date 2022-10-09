@@ -14,6 +14,7 @@
     "nuxt": "3.0.0-rc.11"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^1.0.0-beta.3",
     "nuxt3": "^3.0.0-rc.12-27736489.2e080c2",
     "universal-cookie": "^4.0.4"
   }

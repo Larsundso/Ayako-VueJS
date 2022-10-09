@@ -35,7 +35,7 @@ const Contributers = (
 .contributers {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
   column-gap: 10rem;
   row-gap: 2rem;
 }
@@ -43,14 +43,14 @@ const Contributers = (
 @media (max-width: 1500px) {
   .contributers {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
   }
 }
 
 @media (max-width: 700px) and (min-width: 0px) {
   .contributers {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-auto-rows: 1fr;
   }
 }
 

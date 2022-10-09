@@ -5,7 +5,8 @@ html {
   --text-color: white;
   --gold-color: gold;
   --red-color: #fe3521;
-  --noBGSelect-color: #50505b
+  --noBGSelect-color: #50505b;
+  --grey-color: #7e7e8f;
 }
 
 body,
@@ -31,15 +32,17 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--grey-color);
   border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--noBGSelect-color);
 }
 
-button, .button, NuxtLink {
+button,
+.button,
+NuxtLink {
   font-weight: bold;
   text-decoration: none;
   background-color: var(--button-color);
@@ -51,6 +54,20 @@ button, .button, NuxtLink {
   color: white;
 }
 
-button:hover, .button:hover, NuxtLink:hover {
+button:hover,
+.button:hover,
+NuxtLink:hover {
   background-color: var(--button-hover-color);
+}
+
+::placeholder {
+  color: var(--grey-color);
+  font-weight: bold;
+}
+
+input {
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: var(--noBGSelect-color);
+  color: var(--text-color);
 }

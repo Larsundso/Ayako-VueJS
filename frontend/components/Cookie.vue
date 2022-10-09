@@ -34,13 +34,13 @@ export default {
 
 <style scoped>
 .privacy {
-  background-color: var(--noBGSelect-color);
+  background-color: var(--grey-color);
   font-size: 0.7em;
   margin-left: 3rem;
 }
 
 .privacy:hover {
-  background-color: #2d2d33;
+  background-color: var(--noBGSelect-color);
 }
 
 .main {

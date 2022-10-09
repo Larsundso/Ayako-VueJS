@@ -193,7 +193,7 @@ const onResize = () => {
 }
 
 .footerButton {
-  color: #181818;
+  color: var(--base-color);
   font-size: 1rem;
 }
 
@@ -254,7 +254,7 @@ const onResize = () => {
 
 .featureBox {
   position: absolute;
-  background-color: #cb3408;
+  background-color: var(--red-color);
   border-radius: 1rem;
   padding: 1.5rem;
   align-self: flex-start;
@@ -337,7 +337,11 @@ const onResize = () => {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(to left, #fe3521, #23d13b);
+  background-image: linear-gradient(
+    to left,
+    var(--red-color),
+    var(--button-color)
+  );
   z-index: -1;
   transition: opacity 0.2s linear;
   opacity: 0;
@@ -353,7 +357,11 @@ const onResize = () => {
   animation: 1s ease-in-out 2s both joinButton;
   opacity: 0;
   color: white;
-  background-image: linear-gradient(to right, #fe3521, #23d13b);
+  background-image: linear-gradient(
+    to right,
+    var(--red-color),
+    var(--button-color)
+  );
   z-index: 1;
 }
 
@@ -368,16 +376,16 @@ const onResize = () => {
 }
 
 .inviteButton {
-  color: #fe3521;
-  background-color: white;
+  color: var(--red-color);
+  background-color: var(--text-color);
   animation: 1s ease-in-out 2s both inviteButton;
   opacity: 0;
   transition: background-color 0.2s, color 0.2s;
 }
 
 .inviteButton:hover {
-  color: white;
-  background-color: #fe3521;
+  color: var(--text-color);
+  background-color: var(--red-color);
 }
 
 @keyframes inviteButton {
