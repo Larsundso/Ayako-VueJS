@@ -1,1 +1,1 @@
-import './refreshContributers.js';
+import './refreshUsers.js';
