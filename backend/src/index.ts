@@ -1,5 +1,4 @@
 import readline from 'readline';
-import './server.js';
 import './socketIOHandler.js';
 import './DataBase.js';
 
