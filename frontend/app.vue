@@ -27,9 +27,11 @@ if (accessToken) {
   const id = useCookie("id");
 
   tag.value = `${userData.username}#${userData.discriminator}`;
-  avatar.value = `https://cdn.discordapp.com/avatars/${userData.id}/${
-    userData.avatar
-  }${userData.avatar?.startsWith("a_") ? ".gif" : ".png"}`;
+  avatar.value = userData.avatar
+    ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}${
+        userData.avatar?.startsWith("a_") ? ".gif" : ".png"
+      }`
+    : "https://cdn.discordapp.com/embed/avatars/1.png";
   id.value = userData.value;
 }
 
