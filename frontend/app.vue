@@ -15,8 +15,9 @@ import Cookie from "@/components/Cookie.vue";
 const accessToken = useCookie("accessToken");
 const acceptedCookies = useCookie("acceptedCookies");
 
-if (accessToken) {
+if (accessToken.value) {
   const userData = await fetch("https://discord.com/api/users/@me", {
+    method: "GET",
     headers: {
       authorization: `Bearer ${accessToken.value}`,
     },
@@ -33,6 +34,11 @@ if (accessToken) {
       }`
     : "https://cdn.discordapp.com/embed/avatars/1.png";
   id.value = userData.value;
+
+  fetch("https://api.ayakobot.com/users", {
+    method: "POST",
+    headers: { authorization: accessToken.value },
+  });
 }
 
 useHead({
