@@ -16,7 +16,7 @@ const Artworks = (await artworksResponse.json()) as {
   };
 }[];
 
-const isHovering = ref(false);
+const showModal = ref(false);
 const Types = ["Emoji", "Full", "Icon"];
 const selectedTypes = ref([]);
 const searchbox = ref("");
@@ -30,8 +30,8 @@ onBeforeMount(() => {
   loaded.value = true;
 });
 
-const toggleHover = (state: boolean) => {
-  isHovering.value = state;
+const toggleShow = () => {
+  showModal.value = !showModal.value;
 };
 
 const toggleTypeFilter = (type: typeof Types[0]) => {
@@ -59,35 +59,40 @@ const mouseEnter = (i: number) => {
 
 <template>
   <div class="main">
-    <div
-      class="guidelines"
-      @mouseenter="toggleHover(true)"
-      @mouseleave="toggleHover(false)"
-    >
-      <div class="guidelinesTitle">Art Requirements</div>
-      <div class="guidelinesHoverMe" v-if="!isHovering">(hover me)</div>
-      <div class="guidelinesText" v-if="isHovering">
-        <div class="list">
-          <li>Lynx Girl</li>
-          <li>Black Glove on her right Hand (her POV)</li>
-          <li>
-            Base Hair and Eye Color should match References
-            <div class="smallText">(Does not have to be exact)</div>
-            <div class="smallText">
-              (Accent Color can vary as much as you like)
+    <transition name="vanish" mode="out-in">
+      <div class="guidelines" @click="toggleShow()">
+        <div class="guidelinesTitle">Art Requirements</div>
+        <div class="guidelinesHoverMe">(click me)</div>
+        <transition name="vanish" mode="out-in">
+          <div class="guidelinesModal" v-if="showModal">
+            <div class="guidelinesText">
+              <div class="list">
+                <li>Lynx Girl</li>
+                <li>Black Glove on her right Hand (her POV)</li>
+                <li>
+                  Base Hair and Eye Color should match References
+                  <div class="smallText">(Does not have to be exact)</div>
+                  <div class="smallText">
+                    (Accent Color can vary as much as you like)
+                  </div>
+                </li>
+                <li>Basic Stature should match References</li>
+              </div>
+              Not Following the above Requirements may not get your Artwork
+              removed
+              <div class="importantText">All Artworks have to be SFW</div>
+              <div class="referencesTitle">References</div>
+              <div class="referencesText">
+                Find References by Filtering the existing Artwork below by
+                Artists
+                <code>Fuyurein</code>, <code>Victoria</code> or
+                <code>Angel</code>
+              </div>
             </div>
-          </li>
-          <li>Basic Stature should match References</li>
-        </div>
-        Not Following the above Requirements may not get your Artwork removed
-        <div class="importantText">All Artworks have to be SFW</div>
-        <div class="referencesTitle">References</div>
-        <div class="referencesText">
-          Find References by Filtering the existing Artwork below by Artists
-          <code>Fuyurein</code>, <code>Victoria</code> or <code>Angel</code>
-        </div>
+          </div>
+        </transition>
       </div>
-    </div>
+    </transition>
     <div class="filters">
       <div class="filtersWrapper">
         <div class="typeFilterWrapper">
@@ -122,41 +127,17 @@ const mouseEnter = (i: number) => {
         @mouseenter="mouseEnter(i)"
         @mouseleave="mouseLeave()"
       >
-        <img
-          v-show="loadedImages.includes(i) && show !== i"
-          :src="artwork.url"
-          class="artImage"
-          @load="loadedImages.push(i)"
-          @error="erroredImages.push(i)"
-          :fetchPriority="i > displayedArtworks.length / 3 ? 'high' : 'low'"
-        />
-        <div v-show="show === i" class="expandedArtwork">
-          <div>
-            <img
-              :src="artwork.url"
-              class="artImage"
-              v-show="loadedImages.includes(i)"
-              :fetchPriority="i > displayedArtworks.length / 3 ? 'high' : 'low'"
-            />
-            <div
-              class="loadingImgDiv"
-              v-if="
-                (!loadedImages.includes(i) && !erroredImages.includes(i)) ||
-                erroredImages.includes(i)
-              "
-            >
-              <img
-                v-if="!loadedImages.includes(i) && !erroredImages.includes(i)"
-                src="https://cdn.ayakobot.com/Loading.gif"
-                class="loadingImg"
-              />
-              <img
-                v-if="erroredImages.includes(i)"
-                src="https://cdn.ayakobot.com/Cross.png"
-                class="loadingImg"
-              />
-            </div>
-          </div>
+        <a :href="artwork.url" target="_blank">
+          <img
+            v-show="loadedImages.includes(i)"
+            :src="artwork.url"
+            class="artImage"
+            @load="loadedImages.push(i)"
+            @error="erroredImages.push(i)"
+            :fetchPriority="i > displayedArtworks.length / 3 ? 'high' : 'low'"
+          />
+        </a>
+        <div v-if="show === i" class="expandedArtwork">
           <div class="artist">
             <img
               :src="
@@ -200,10 +181,11 @@ const mouseEnter = (i: number) => {
 <style scoped>
 .artBoxes {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 1fr;
-  width: 100%;
-  margin-left: 10rem;
+  width: 90%;
+  overflow: hidden;
+  padding: 4rem;
 }
 .typeFilter {
   margin: 1rem;
@@ -298,36 +280,46 @@ code {
 
 .main {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
   flex-direction: column;
-  width: 90%;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 .guidelines {
-  display: flex;
   flex-direction: column;
   text-align: center;
+  background-color: var(--main-color);
 }
 
+.guidelinesModal {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .guidelinesText {
   padding: 2rem;
   border: 2px solid var(--button-color);
   border-radius: 1em;
+  z-index: 999;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
 }
 
 .artImage {
-  width: 15rem;
+  width: 10rem;
   height: auto;
-  padding: 1rem;
   border-radius: 1rem;
-}
-
-.artwork {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
 .loadingImgDiv {
@@ -354,6 +346,7 @@ code {
 .username {
   font-weight: bold;
   margin-left: 1rem;
+  text-decoration: none;
 }
 
 .pageLoading {
@@ -361,15 +354,35 @@ code {
 }
 
 .expandedArtwork {
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   border-radius: 1rem;
   flex-direction: column;
   align-items: center;
-  transition: all ease-in-out 0.1s;
 }
 
-.expandedArtwork:hover {
+.artwork {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all ease-in-out 0.2s;
+  padding-top: 1rem;
+}
+
+.artwork:hover {
   background-color: var(--noBGSelect-color);
-  scale: 1.5;
+  scale: 1.3;
+  border-radius: 1rem;
+}
+
+.vanish-enter-active,
+.vanish-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.vanish-enter-from,
+.vanish-leave-to {
+  opacity: 0;
 }
 </style>
