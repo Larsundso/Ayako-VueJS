@@ -63,14 +63,31 @@ const handleEvent = (type: 'userfetching', client: SocketIO.Socket) => {
       client.on(
         'USERS_FETCHED',
         (users: { id: string; discriminator: string; username: string; avatar: string }[]) => {
-          users.forEach((u) => {
-            DataBase.query(`UPDATE ayakousers SET username = $1, avatar = $2, lastfetch = $3;`, [
-              `${u.username}#${u.discriminator}`,
-              `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.${
-                u.avatar?.startsWith('a_') ? 'gif' : 'png'
-              }`,
-              Date.now(),
-            ]);
+          users.forEach((u, i) => {
+            setTimeout(() => {
+              if (!u) return;
+
+              DataBase.query(
+                `UPDATE ayakousers SET username = $1, avatar = $2, lastfetch = $3 WHERE userid = $4;`,
+                [
+                  `${u?.username || 'Deleted User'}#${u?.discriminator || '0000'}`,
+                  u?.avatar
+                    ? `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.${
+                        u.avatar?.startsWith('a_') ? 'gif' : 'png'
+                      }`
+                    : 'https://cdn.discordapp.com/embed/avatars/1.png',
+                  Date.now(),
+                  u.id,
+                ],
+              );
+            }, i * 100);
+
+            setTimeout(() => {
+              DataBase.query(
+                `UPDATE ayakousers SET username = $1, avatar = $2, lastfetch = $3 WHERE username IS NULL;`,
+                ['Deleted User', 'https://cdn.discordapp.com/embed/avatars/1.png', Date.now()],
+              );
+            }, users.length * 100);
           });
         },
       );

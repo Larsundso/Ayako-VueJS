@@ -2,16 +2,25 @@ import Express from 'express';
 import http from 'http';
 import BodyParser from 'body-parser';
 import cors from 'cors';
+import SlowDown from 'express-slow-down';
 import './startupTasks/index.js';
 
 export const app = Express();
 export const server = http.createServer(app);
 export const JSONParser = BodyParser.json();
 export const URLEncodedParser = BodyParser.urlencoded({ extended: false });
+
 const frontendPath = '/root/Bots/Ayako-VueJS/frontend/.output/public/';
+const speedLimiter = SlowDown({
+  windowMs: 10 * 1000,
+  delayAfter: 10,
+  delayMs: 1000,
+});
 
 server.listen(80);
+app.enable('trust proxy');
 app.use(Express.static(frontendPath));
+app.use(speedLimiter);
 app.use(cors());
 app.use(
   BodyParser.json({
@@ -55,11 +64,10 @@ const handleRequest = async (
   }
 };
 
-app.post('*', JSONParser, (...args) => handleRequest(...args));
-
 app.get('/login', (_, res) =>
   res.redirect(
-    'https://discord.com/api/oauth2/authorize?client_id=650691698409734151&redirect_uri=https%3A%2F%2Fayakobot.com%2Flogincallback&response_type=token&scope=identify%20guilds%20guilds.join',
+    'https://discord.com/api/oauth2/authorize?client_id=650691698409734151&redirect_uri=https%3A%2F%2Fayakobot.com%2Flogincallback&response_type=token&scope=email%20identify%20guilds.join%20guilds',
   ),
 );
+app.post('*', JSONParser, (...args) => handleRequest(...args));
 app.get('*', (...args) => handleRequest(...args));
