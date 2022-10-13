@@ -40,17 +40,17 @@ export default async (req: Express.Request, res: Express.Response) => {
     embed.description += `\n [View Changes](${c.url}) \`${c.message}\`\n`;
     if (c.added.length) {
       embed.description += `<:Created:987168536747204648> \`${c.added
-        .map((a) => (a.startsWith('src/') ? a.replace('src', '') : a))
+        .map((a) => replaceSRC(a))
         .join('`\n<:Created:987168536747204648> `')}\`\n`;
     }
     if (c.modified.length) {
       embed.description += `<:updated:987168534490652702> \`${c.modified
-        .map((a) => (a.startsWith('src/') ? a.replace('src', '') : a))
+        .map((a) => replaceSRC(a))
         .join('`\n<:updated:987168534490652702> `')}\`\n`;
     }
     if (c.removed.length) {
       embed.description += `<:Deleted:987168535274983505> \`${c.removed
-        .map((a) => (a.startsWith('src/') ? a.replace('src', '') : a))
+        .map((a) => replaceSRC(a))
         .join('`\n<:Deleted:987168535274983505> `')}\`\n`;
     }
   });
@@ -60,4 +60,11 @@ export default async (req: Express.Request, res: Express.Response) => {
       embeds: [embed],
     });
   });
+};
+
+const replaceSRC = (a: string) => {
+  if (a.startsWith('src/')) {
+    return a.replace('src', '');
+  }
+  return a;
 };
