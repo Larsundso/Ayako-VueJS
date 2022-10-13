@@ -40,17 +40,17 @@ export default async (req: Express.Request, res: Express.Response) => {
     embed.description += `\n [View Changes](${c.url}) \`${c.message}\`\n`;
     if (c.added.length) {
       embed.description += `<:Created:987168536747204648> \`${c.added
-        .map((a) => a.replace('src', ''))
+        .map((a) => (a.startsWith('src/') ? a.replace('src', '') : ''))
         .join('`\n<:Created:987168536747204648> `')}\`\n`;
     }
     if (c.modified.length) {
       embed.description += `<:updated:987168534490652702> \`${c.modified
-        .map((a) => a.replace('src', ''))
+        .map((a) => (a.startsWith('src/') ? a.replace('src', '') : ''))
         .join('`\n<:updated:987168534490652702> `')}\`\n`;
     }
     if (c.removed.length) {
       embed.description += `<:Deleted:987168535274983505> \`${c.removed
-        .map((a) => a.replace('src', ''))
+        .map((a) => (a.startsWith('src/') ? a.replace('src', '') : ''))
         .join('`\n<:Deleted:987168535274983505> `')}\`\n`;
     }
   });
