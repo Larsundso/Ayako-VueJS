@@ -11,11 +11,11 @@ const getDBRes = (users?: string[] | string, types?: string[] | string) => {
       return (
         !types?.length
           ? DataBase.query(
-              `SELECT * FROM artworks WHERE userid = ANY ($1) ORDER BY created DESC;`,
+              `SELECT * FROM artworks WHERE userid = ANY ($1) AND verified = true ORDER BY created DESC;`,
               [Array.isArray(users) ? users : [users]],
             )
           : DataBase.query(
-              `SELECT * FROM artworks WHERE userid = ANY ($1) AND type = ANY ($2) ORDER BY created DESC;`,
+              `SELECT * FROM artworks WHERE userid = ANY ($1) AND type = ANY ($2) AND verified = true ORDER BY created DESC;`,
               [Array.isArray(users) ? users : [users], Array.isArray(types) ? types : [types]],
             )
       ).then((r) => (r ? (r.rows as DataBaseTypings.artworks[]) : null));
@@ -23,10 +23,11 @@ const getDBRes = (users?: string[] | string, types?: string[] | string) => {
     default: {
       return (
         !types?.length
-          ? DataBase.query(`SELECT * FROM artworks ORDER BY created DESC;`)
-          : DataBase.query(`SELECT * FROM artworks WHERE type = ANY ($1) ORDER BY created DESC;`, [
-              Array.isArray(types) ? types : [types],
-            ])
+          ? DataBase.query(`SELECT * FROM artworks WHERE verified = true ORDER BY created DESC;`)
+          : DataBase.query(
+              `SELECT * FROM artworks WHERE type = ANY ($1) AND verified = true ORDER BY created DESC;`,
+              [Array.isArray(types) ? types : [types]],
+            )
       ).then((r) => (r ? (r.rows as DataBaseTypings.artworks[]) : null));
     }
   }

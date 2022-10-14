@@ -222,7 +222,6 @@ export default {
   overflow: hidden;
   position: absolute;
   max-width: 15rem;
-  margin-top: -2rem;
   float: bottom;
   left: 0;
 }
