@@ -1,9 +1,15 @@
 <template>
   <div>
-    <NavBar />
-    <Cookie v-if="!acceptedCookies" />
-    <NuxtPage />
-    <PageFooter />
+    <nav>
+      <NavBar />
+    </nav>
+    <main>
+      <Cookie v-if="!acceptedCookies" />
+      <NuxtPage />
+    </main>
+    <footer>
+      <PageFooter />
+    </footer>
   </div>
 </template>
 

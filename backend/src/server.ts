@@ -12,7 +12,7 @@ export const URLEncodedParser = BodyParser.urlencoded({ extended: false });
 
 const frontendPath = '/root/Bots/Ayako-VueJS/frontend/.output/public/';
 const speedLimiter = SlowDown({
-  windowMs: 10 * 1000,
+  windowMs: 5 * 1000,
   delayAfter: 10,
   delayMs: 1000,
 });
