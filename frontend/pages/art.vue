@@ -55,6 +55,13 @@ const mouseLeave = () => {
 const mouseEnter = (i: number) => {
   show.value = i;
 };
+
+const getDisplayedArt = () =>
+  [...displayedArtworks.value].filter((a) =>
+    searchbox.value.length
+      ? a.user?.username?.toLowerCase().includes(searchbox.value.toLowerCase())
+      : true
+  );
 </script>
 
 <template>
@@ -96,7 +103,7 @@ const mouseEnter = (i: number) => {
     <div class="filters">
       <div class="filtersWrapper">
         <div class="typeFilterWrapper">
-          <div v-for="(type, i) in Types" :key="i" class="typeFilters">
+          <div v-for="(type, i) in Types" :key="i">
             <button
               :class="`typeFilter ${
                 selectedTypes.includes(type)
@@ -112,7 +119,6 @@ const mouseEnter = (i: number) => {
         </div>
         <input
           type="text"
-          class="filterSearch"
           placeholder="Search for an Artist"
           v-model="searchbox"
         />
@@ -121,7 +127,7 @@ const mouseEnter = (i: number) => {
     <div class="artBoxes">
       <div
         v-if="loaded"
-        v-for="(artwork, i) in displayedArtworks"
+        v-for="(artwork, i) in getDisplayedArt()"
         :key="i"
         class="artwork"
         @mouseenter="mouseEnter(i)"
@@ -173,7 +179,6 @@ const mouseEnter = (i: number) => {
           />
         </div>
       </div>
-      <div v-else class="pageLoading"></div>
     </div>
   </div>
 </template>
@@ -217,20 +222,11 @@ const mouseEnter = (i: number) => {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .filtersWrapper {
-  border-image: linear-gradient(
-      var(--base-color),
-      var(--noBGSelect-color),
-      var(--base-color)
-    )
-    1;
-  border-style: solid;
-  border-width: 0.15rem;
-
   margin-top: 2rem;
-  padding: 1rem;
   height: 2rem;
   width: 100%;
   display: flex;
@@ -238,6 +234,7 @@ const mouseEnter = (i: number) => {
   justify-content: space-between;
   align-items: center;
 }
+
 .filters {
   text-align: center;
   display: flex;
@@ -313,6 +310,7 @@ code {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: black;
+  width: auto;
 }
 
 .artImage {
@@ -335,6 +333,8 @@ code {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .avatar {
@@ -384,5 +384,43 @@ code {
 .vanish-enter-from,
 .vanish-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 1000px) {
+  .artBoxes {
+    margin-top: 10rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .filtersWrapper {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .guidelinesText {
+    width: 80%;
+  }
+}
+
+@media (max-width: 800px) {
+  .artBoxes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .artBoxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .artBoxes {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .guidelinesText {
+    width: 60%;
+  }
 }
 </style>
