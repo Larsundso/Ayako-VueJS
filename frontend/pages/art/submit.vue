@@ -2,29 +2,44 @@
 import { ref } from "vue";
 
 const accessToken = useCookie("accessToken");
-const file = ref(null);
 const submitted = ref(false);
 const url = ref(null);
-
-const uploadFile = (e: any) => {
-  url.value = URL.createObjectURL(e.target.files[0]);
-  file.value = e.target.files[0];
-};
+const valid = ref(false);
+const error = ref(null);
 
 const submitFile = () => {
-  const data = new FormData();
-  data.append("file", file.value);
-
   fetch("https://api.ayakobot.com/artworks", {
     method: "POST",
     headers: {
       authorization: accessToken.value,
-      "Content-Type": "text/plain",
-      test: url.value,
+      link: url.value,
     },
   });
 
   submitted.value = true;
+};
+
+const textChanged = () => {
+  switch (true) {
+    case !["jpg", "png", "gif", "jpeg"].includes(
+      url.value.split(".")[url.value.split(".").length - 1]
+    ): {
+      error.value =
+        'Link does not end with an accepted File Extension. Valid File Extensions are "jpg", "png", "gif" and "jpeg"';
+      valid.value = false;
+      break;
+    }
+    case !url.value.startsWith("https://") &&
+      !url.value.startsWith("http://"): {
+      error.value = 'Link does not start with "https://" or "http://"';
+      valid.value = false;
+      break;
+    }
+    default: {
+      valid.value = true;
+      break;
+    }
+  }
 };
 </script>
 
@@ -35,9 +50,14 @@ const submitFile = () => {
       <img src="https://cdn.ayakobot.com/Cross.png" />
     </div>
     <div v-else-if="!submitted" class="upload">
-      <img v-if="url" :src="url" />
-      <input type="file" @change="uploadFile" ref="file" />
-      <button class="submit" @click="submitFile()" v-if="url">Submit</button>
+      <input
+        type="text"
+        v-model="url"
+        placeholder="Input a Image URL"
+        @input="textChanged"
+      />
+      <div v-if="url && !valid" class="error">{{ error }}</div>
+      <button class="submit" @click="submitFile()" v-if="valid">Submit</button>
     </div>
     <div v-else-if="submitted" class="success">
       <h1>Thank you for your submission!</h1>
@@ -47,6 +67,11 @@ const submitFile = () => {
 </template>
 
 <style scoped>
+.error {
+  color: var(--red-color);
+  margin-top: 1rem;
+}
+
 .submit {
   margin-top: 1rem;
 }
