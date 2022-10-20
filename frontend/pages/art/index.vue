@@ -95,6 +95,9 @@ const getDisplayedArt = () =>
                 <code>Fuyurein</code>, <code>Victoria</code> or
                 <code>Angel</code>
               </div>
+              <NuxtLink to="/art/submit" class="button"
+                >Submit Artwork</NuxtLink
+              >
             </div>
           </div>
         </transition>
@@ -374,6 +377,10 @@ code {
   background-color: var(--noBGSelect-color);
   scale: 1.3;
   border-radius: 1rem;
+}
+
+.referencesText {
+  margin-bottom: 3rem;
 }
 
 .vanish-enter-active,
