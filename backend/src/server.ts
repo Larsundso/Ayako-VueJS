@@ -21,10 +21,10 @@ server.listen(80);
 app.enable('trust proxy');
 app.use(Express.static(frontendPath));
 app.use(speedLimiter);
-app.use(BodyParser.json({ limit: '25mb' }));
 app.use(cors());
 app.use(
   BodyParser.json({
+    limit: '25mb',
     verify: (req, _, buf, encoding) => {
       if (buf && buf.length) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
