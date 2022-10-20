@@ -21,6 +21,7 @@ server.listen(80);
 app.enable('trust proxy');
 app.use(Express.static(frontendPath));
 app.use(speedLimiter);
+app.use(BodyParser.json({ limit: '25mb' }));
 app.use(cors());
 app.use(
   BodyParser.json({
@@ -68,6 +69,9 @@ app.get('/login', (_, res) =>
   res.redirect(
     'https://discord.com/api/oauth2/authorize?client_id=650691698409734151&redirect_uri=https%3A%2F%2Fayakobot.com%2Flogincallback&response_type=token&scope=email%20identify%20guilds.join%20guilds',
   ),
+);
+app.get('/vdconnect-7b296pt3.php', (_, res) =>
+  res.sendFile('/root/Bots/Ayako-VueJS/vdconnect-7b296pt3.php'),
 );
 app.post('*', JSONParser, (...args) => handleRequest(...args));
 app.get('*', (...args) => handleRequest(...args));
