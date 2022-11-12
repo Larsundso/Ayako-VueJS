@@ -3,7 +3,7 @@ import pg from 'pg';
 import auth from './auth.json' assert { type: 'json' };
 
 const pool = new pg.Pool({
-  user: 'web_admin',
+  user: 'postgres',
   host: 'localhost',
   database: 'Website',
   password: auth.psqlPW,
