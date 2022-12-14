@@ -1,5 +1,5 @@
 import type Express from 'express';
-import DataBase from '../../../DataBase.js';
+import DataBase from '../../DataBase.js';
 
 export default async (_req: Express.Request, res: Express.Response) => {
   const dbRes = await DataBase.query(`SELECT * FROM giveaways WHERE ended = false;`).then(
@@ -36,5 +36,8 @@ export default async (_req: Express.Request, res: Express.Response) => {
 
   dbRes.participants = sortedParticipants;
 
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.json(dbRes);
+  res.end();
 };

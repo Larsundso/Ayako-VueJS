@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const raffleResponse = await fetch("https://api.ayakobot.com/willis/raffle");
+const raffleResponse = await fetch("https://api.ayakobot.com/raffle");
 const Raffle = (await raffleResponse.json()) as {
   msgid: string;
   endtime: string;
