@@ -388,7 +388,7 @@
         <li class="paragraph-list-item">
           <div class="paragraph-body">
             <div class="paragraph-list-item-text">
-              <strong>The The right to object.</strong>
+              <strong>The right to object.</strong>
             </div>
             You have the right to object to my processing of your Personal Data.
           </div>
